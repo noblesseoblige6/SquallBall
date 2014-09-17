@@ -349,6 +349,7 @@ GameObject:
   - 58: {fileID: 1098377885}
   - 50: {fileID: 1098377884}
   - 114: {fileID: 1098377883}
+  - 114: {fileID: 1098377888}
   m_Layer: 0
   m_Name: GreenMiddleBall
   m_TagString: Untagged
@@ -367,10 +368,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04745ba5c9660fe4387fbde0a67fc7c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  maxSpeed: 5
-  direction: {x: 0, y: 0}
-  isKicked: 0
 --- !u!50 &1098377884
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -431,6 +428,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!114 &1098377888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1098377882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8925be58749b41a1b1ac845481b8c0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  maxSpeed: 5
+  direction: {x: 0, y: 0}
+  isKicked: 0
 --- !u!1 &1423774565
 GameObject:
   m_ObjectHideFlags: 0
