@@ -220,7 +220,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f47bf2892f075d46927ed8d08264825, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bottunPos: {x: 0, y: 0}
 --- !u!1 &1048647723
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,7 +305,7 @@ SpriteRenderer:
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 32d61f38fe397df459f8418273b44b37, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1138863043
@@ -356,7 +355,7 @@ SpriteRenderer:
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 1bd0cf7b6636e8d4a86ee757423f9247, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!4 &1223109377

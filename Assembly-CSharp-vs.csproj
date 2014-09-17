@@ -50,8 +50,8 @@
      <Compile Include="Assets\Scripts\For_Balls\Deleteball.cs" />
      <Compile Include="Assets\Scripts\For_Balls\GenGreenBall.cs" />
      <Compile Include="Assets\Scripts\For_Balls\GenRedBall.cs" />
+     <Compile Include="Assets\Scripts\GUIStart.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
-     <Compile Include="Assets\Scripts\StartDisplay.cs" />
      <Compile Include="Assets\Scripts\TestSphere.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
