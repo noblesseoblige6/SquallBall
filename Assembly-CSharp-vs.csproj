@@ -46,15 +46,13 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
+     <Compile Include="Assets\MakeGreenBall.cs" />
      <Compile Include="Assets\MakeRedBall.cs" />
      <Compile Include="Assets\MakeRedBall2.cs" />
      <Compile Include="Assets\Scripts\Clock.cs" />
-=======
-     <Compile Include="Assets\MakeGreenBall.cs" />
->>>>>>> 9b4a8ce... GreenBall を自動生成(ねずみ算式に増えるので、要修正)
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\TestSphere.cs" />
+     <Compile Include="Assets\deleteball.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
