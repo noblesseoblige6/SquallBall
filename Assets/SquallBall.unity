@@ -248,7 +248,7 @@ GameObject:
   - 114: {fileID: 1005467385}
   m_Layer: 0
   m_Name: GreenBall
-  m_TagString: Untagged
+  m_TagString: Respawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -357,7 +357,7 @@ GameObject:
   - 114: {fileID: 1047766832}
   m_Layer: 0
   m_Name: main
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -484,6 +484,10 @@ Prefab:
     - target: {fileID: 400000, guid: 22f884d7833da254ab625fcb765fe028, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 22f884d7833da254ab625fcb765fe028, type: 2}
+      propertyPath: m_TagString
+      value: Respawn
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 22f884d7833da254ab625fcb765fe028, type: 2}
