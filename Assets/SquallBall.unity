@@ -444,6 +444,8 @@ GameObject:
   - 50: {fileID: 1870422402}
   - 114: {fileID: 1870422406}
   - 114: {fileID: 1870422407}
+  - 114: {fileID: 1870422409}
+  - 114: {fileID: 1870422408}
   m_Layer: 0
   m_Name: GreenBall
   m_TagString: Untagged
@@ -534,6 +536,30 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 11400002, guid: 11a841eb77e7c491fb4a09c656c09471,
     type: 2}
   m_PrefabInternal: {fileID: 931380555}
+  m_GameObject: {fileID: 1870422401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20488ca1166cb441abf0c0151d1c9b1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1870422408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1870422401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99a79287394634538b5498160b71c579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obj: {fileID: 0}
+  interval: 30
+--- !u!114 &1870422409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1870422401}
   m_Enabled: 1
   m_EditorHideFlags: 0
