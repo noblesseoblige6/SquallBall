@@ -13,13 +13,7 @@ public class MakeRedBall : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		num++;
 
-		if (num == 60) {
-			num = 0;			
-			Instantiate (this.RedBall);
-
-		}
 	}
 
 		
