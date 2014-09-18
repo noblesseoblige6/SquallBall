@@ -13,7 +13,7 @@ public class GenGreenBall : MonoBehaviour {
 		// Yuki < Infinite loop
 		while (true) {
 			// Yuki < Fueru
-			Instantiate(obstacle, clickPosition, obstacle.transform.rotation);
+			Instantiate(obstacle, transform.position, obstacle.transform.rotation);
 			// Yuki < Wait for interval
 			yield return new WaitForSeconds(interval);
 		}
