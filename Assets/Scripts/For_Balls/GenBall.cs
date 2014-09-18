@@ -1,15 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GenGreenBall : MonoBehaviour {
+public class GenBall : MonoBehaviour {
 
 	// Yuki < fuyasareru object
 	public GameObject obstacle;
 	// Yuki < fueru interval
 	public float interval = 3f;
-
+	public float interval_first=0.1f;
 
 	IEnumerator Start(){
+		yield return new WaitForSeconds (interval_first);
+
 		// Yuki < Infinite loop
 		while (true) {
 			// Yuki < Fueru
