@@ -16,7 +16,7 @@ public class Player : MonoBehaviour {
 
 
 		if (Input.GetKey ("space")) {
-			GameObject nearBall = GameObject.Find("GreenMiddleBall");
+			GameObject nearBall = GameObject.Find("GreenBall");
 			Vector2 relativeVec = nearBall.transform.position - this.transform.position;
 			float distance = relativeVec.magnitude;
 			if(distance < range){
@@ -29,5 +29,13 @@ public class Player : MonoBehaviour {
 				}
 			}
 		}
+	}
+
+	void OnCollisionEnter2D(Collision2D other){
+		if (other.gameObject.CompareTag("Respawn")) {
+			//move to this object to above.
+			Application.LoadLevel ("GameOver");
+			}
+
 	}
 }

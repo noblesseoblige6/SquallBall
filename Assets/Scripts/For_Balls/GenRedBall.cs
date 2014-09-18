@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MakeRedBall : MonoBehaviour {
+public class GenRedBall : MonoBehaviour {
 	// // Kamada < prepare for making balls
 	public 	GameObject 		RedBall;
 	int		num		=		0;

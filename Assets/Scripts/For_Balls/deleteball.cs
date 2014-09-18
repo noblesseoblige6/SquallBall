@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class deleteball : MonoBehaviour {
+public class Deleteball : MonoBehaviour {
 
 	void	OnBecameInvisible(){
 		Destroy (this.gameObject);

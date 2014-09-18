@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MakeGreenBall : MonoBehaviour {
+public class GenGreenBall : MonoBehaviour {
 
 	public GameObject obj;
 	public float interval = 30f;
