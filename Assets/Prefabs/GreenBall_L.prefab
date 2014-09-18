@@ -14,7 +14,7 @@ GameObject:
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: GreenBall
+  m_Name: GreenBall_L
   m_TagString: Respawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
