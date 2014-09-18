@@ -3,24 +3,22 @@ using System.Collections;
 
 public class GenGreenBall : MonoBehaviour {
 
-	public GameObject obj;
-	public float interval = 30f;
+	// Yuki < fuyasareru object
+	public GameObject obstacle;
+	// Yuki < fueru interval
+	public float interval = 3f;
 
-	void Start(){
-		StartCoroutine ("Spawn");
-	}
 
-	IEnumerator Spawn(){
-
+	IEnumerator Start(){
+		// Yuki < Infinite loop
 		while (true) {
-			yield return new WaitForSeconds (interval);
-
-			Instantiate (obj, transform.position, Quaternion.identity);
-
-
+			// Yuki < Fueru
+			Instantiate(obstacle, clickPosition, obstacle.transform.rotation);
+			// Yuki < Wait for interval
+			yield return new WaitForSeconds(interval);
 		}
-
 	}
+
 
 
 
