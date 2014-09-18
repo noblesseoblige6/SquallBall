@@ -16,24 +16,33 @@ public class Player : MonoBehaviour {
 
 
 		if (Input.GetKey ("space")) {
-			GameObject nearBall = GameObject.Find("GreenBall");
-			Vector2 relativeVec = nearBall.transform.position - this.transform.position;
-			float distance = relativeVec.magnitude;
-			if(distance < range){
-				TestSphere ballProp = nearBall.GetComponent<TestSphere>();
-				ballProp.speed = ballProp.maxSpeed/distance;
+			//タグでRespawnとつけられたオブジェクトを取得
+			GameObject[] obstacles = GameObject.FindGameObjectsWithTag("Respawn");
+			//それらの中で距離がrange以内のものはベクトルを逆にする
+			foreach(GameObject obstacle in obstacles){
+				Vector2 relativeVec = obstacle.transform.position - this.transform.position;
+				float distance = relativeVec.magnitude;
+				if(distance < range){
+					print (obstacle.GetComponent<TestSphere>());
+					TestSphere ballProp = obstacle.GetComponent<TestSphere>();
+					ballProp.speed = ballProp.maxSpeed/distance;
 
-				if(!ballProp.isKicked){
-					ballProp.isKicked = true;
-					ballProp.direction *= -1;
+					if(!ballProp.isKicked){
+						ballProp.isKicked = true;
+						ballProp.direction *= -1;
+						ballProp.rigidbody2D.velocity = ballProp.speed * ballProp.direction;
+					}
 				}
 			}
 		}
 	}
-
+	/*
+	 * OnCllisionEnter2D 
+	 * プレイヤーの当たり判定を行う関数
+	 */
 	void OnCollisionEnter2D(Collision2D other){
 		if (other.gameObject.CompareTag("Respawn")) {
-			//move to this object to above.
+			//障害物に当たったらゲームオーバー画面に遷移
 			Application.LoadLevel ("GameOver");
 			}
 
