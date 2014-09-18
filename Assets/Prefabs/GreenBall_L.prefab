@@ -9,13 +9,12 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 212: {fileID: 21200000}
-  - 114: {fileID: 11400000}
   - 58: {fileID: 5800000}
   - 50: {fileID: 5000000}
   - 114: {fileID: 11400002}
-  - 114: {fileID: 11400004}
+  - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: RedBall
+  m_Name: GreenBall_L
   m_TagString: Respawn
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,11 +66,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb18057b22a114b8e94a268e998060eb, type: 3}
+  m_Script: {fileID: 11500000, guid: 04745ba5c9660fe4387fbde0a67fc7c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RedBall: {fileID: 0}
-  num: 0
+  speed: 5
+  maxSpeed: 5
+  direction: {x: 0, y: 0}
+  isKicked: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -83,21 +84,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20488ca1166cb441abf0c0151d1c9b1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11400004
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04745ba5c9660fe4387fbde0a67fc7c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  maxSpeed: 5
-  direction: {x: 0, y: 0}
-  isKicked: 0
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -118,7 +104,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 1bd0cf7b6636e8d4a86ee757423f9247, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 32d61f38fe397df459f8418273b44b37, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

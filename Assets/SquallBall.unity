@@ -108,12 +108,21 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 70663415}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99a79287394634538b5498160b71c579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacle: {fileID: 100000, guid: 8ad24e0fa368340bd8aa43afeb4d0013, type: 2}
+  obstacles:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   interval: 1
   interval_first: .699999988
 --- !u!1 &497508206
@@ -235,12 +244,21 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 533120494}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99a79287394634538b5498160b71c579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacle: {fileID: 100000, guid: 11a841eb77e7c491fb4a09c656c09471, type: 2}
+  obstacles:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   interval: 1
   interval_first: 0
 --- !u!4 &533120496
@@ -351,14 +369,74 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 823792619}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99a79287394634538b5498160b71c579, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstacles:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  interval: 1
+  interval_first: .349999994
+--- !u!1 &909109389
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 909109391}
+  - 114: {fileID: 909109390}
+  m_Layer: 0
+  m_Name: BallGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &909109390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 909109389}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99a79287394634538b5498160b71c579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstacle: {fileID: 100000, guid: 0ef0be98473d8435fbb63f703ec92293, type: 2}
+  obstacles:
+  - {fileID: 100000, guid: 0ef0be98473d8435fbb63f703ec92293, type: 2}
+  - {fileID: 100000, guid: f7827941154f543189d4012e5a3752a9, type: 2}
+  - {fileID: 100000, guid: b2cc5f207c38340a98326cd07fce0e84, type: 2}
+  - {fileID: 100000, guid: 11a841eb77e7c491fb4a09c656c09471, type: 2}
+  - {fileID: 100000, guid: 7c44af7d39e734dc9beaba4af1d29a79, type: 2}
+  - {fileID: 100000, guid: 408d9e5deb7e243e3a230a8ddbe30218, type: 2}
+  - {fileID: 100000, guid: 8ad24e0fa368340bd8aa43afeb4d0013, type: 2}
+  - {fileID: 100000, guid: 9bbae4d58bc0e48ec8e0f87dbc12542c, type: 2}
+  - {fileID: 100000, guid: 52d57393f75d640f494d3fcd5836d8cb, type: 2}
   interval: 1
-  interval_first: .349999994
+  interval_first: .100000001
+--- !u!4 &909109391
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 909109389}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .0135640949, y: 2.70799828, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
 --- !u!1 &1047766826
 GameObject:
   m_ObjectHideFlags: 0
