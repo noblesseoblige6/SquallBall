@@ -115,6 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacle: {fileID: 100000, guid: 8ad24e0fa368340bd8aa43afeb4d0013, type: 2}
   interval: 1
+  interval_first: .699999988
 --- !u!1 &497508206
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,6 +242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacle: {fileID: 100000, guid: 11a841eb77e7c491fb4a09c656c09471, type: 2}
   interval: 1
+  interval_first: 0
 --- !u!4 &533120496
 Transform:
   m_ObjectHideFlags: 0
@@ -356,6 +358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obstacle: {fileID: 100000, guid: 0ef0be98473d8435fbb63f703ec92293, type: 2}
   interval: 1
+  interval_first: .349999994
 --- !u!1 &1047766826
 GameObject:
   m_ObjectHideFlags: 0
