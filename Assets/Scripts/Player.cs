@@ -16,7 +16,9 @@ public class Player : MonoBehaviour {
 
 
 		if (Input.GetKey ("space")) {
+			//タグでRespawnとつけられたオブジェクトを取得
 			GameObject[] obstacles = GameObject.FindGameObjectsWithTag("Respawn");
+			//それらの中で距離がrange以内のものはベクトルを逆にする
 			foreach(GameObject obstacle in obstacles){
 				Vector2 relativeVec = obstacle.transform.position - this.transform.position;
 				float distance = relativeVec.magnitude;
@@ -34,10 +36,13 @@ public class Player : MonoBehaviour {
 			}
 		}
 	}
-
+	/*
+	 * OnCllisionEnter2D 
+	 * プレイヤーの当たり判定を行う関数
+	 */
 	void OnCollisionEnter2D(Collision2D other){
 		if (other.gameObject.CompareTag("Respawn")) {
-			//move to this object to above.
+			//障害物に当たったらゲームオーバー画面に遷移
 			Application.LoadLevel ("GameOver");
 			}
 
