@@ -3,25 +3,25 @@ using System.Collections;
 
 public class GenGreenBall : MonoBehaviour {
 
-	public GameObject obj;
+	public GameObject obstacle;
 	public float interval = 30f;
-
-	void Start(){
+	private Vector3 clickPosition;
+	IEnumerator Start(){
 		StartCoroutine ("Spawn");
-	}
-
-	IEnumerator Spawn(){
-
 		while (true) {
-			yield return new WaitForSeconds (interval);
-
-			Instantiate (obj, transform.position, Quaternion.identity);
-
-
+			Instantiate(obstacle, clickPosition, obstacle.transform.rotation);
+			yield return new WaitForSeconds(interval);
 		}
-
 	}
 
+//	void Update(){
+//		if(Input.GetMouseButton (0)){
+//			clickPosition = Input.mousePosition;
+//			clickPosition.z = 0f;
+///			Instantiate (obstacle, clickPosition, obstacle.transform.rotation);
+//		}
+
+//	}
 
 
 }
