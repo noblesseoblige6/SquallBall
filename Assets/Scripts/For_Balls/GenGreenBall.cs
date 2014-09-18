@@ -5,7 +5,6 @@ public class GenGreenBall : MonoBehaviour {
 
 	public GameObject obstacle;
 	public float interval = 30f;
-	private Vector3 clickPosition;
 	IEnumerator Start(){
 		StartCoroutine ("Spawn");
 		while (true) {
