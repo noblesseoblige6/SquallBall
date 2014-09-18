@@ -16,16 +16,20 @@ public class Player : MonoBehaviour {
 
 
 		if (Input.GetKey ("space")) {
-			GameObject nearBall = GameObject.Find("GreenBall");
-			Vector2 relativeVec = nearBall.transform.position - this.transform.position;
-			float distance = relativeVec.magnitude;
-			if(distance < range){
-				TestSphere ballProp = nearBall.GetComponent<TestSphere>();
-				ballProp.speed = ballProp.maxSpeed/distance;
+			GameObject[] obstacles = GameObject.FindGameObjectsWithTag("Respawn");
+			foreach(GameObject obstacle in obstacles){
+				Vector2 relativeVec = obstacle.transform.position - this.transform.position;
+				float distance = relativeVec.magnitude;
+				print(distance);
+				if(distance < range){
+					TestSphere ballProp = obstacle.GetComponent<TestSphere>();
+					ballProp.speed = ballProp.maxSpeed/distance;
 
-				if(!ballProp.isKicked){
-					ballProp.isKicked = true;
-					ballProp.direction *= -1;
+					if(!ballProp.isKicked){
+						ballProp.isKicked = true;
+						ballProp.direction *= -1;
+						ballProp.rigidbody2D.velocity = ballProp.speed * ballProp.direction;
+					}
 				}
 			}
 		}
