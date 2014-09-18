@@ -22,8 +22,8 @@ public class Player : MonoBehaviour {
 			foreach(GameObject obstacle in obstacles){
 				Vector2 relativeVec = obstacle.transform.position - this.transform.position;
 				float distance = relativeVec.magnitude;
-				print(distance);
 				if(distance < range){
+					print (obstacle.GetComponent<TestSphere>());
 					TestSphere ballProp = obstacle.GetComponent<TestSphere>();
 					ballProp.speed = ballProp.maxSpeed/distance;
 
