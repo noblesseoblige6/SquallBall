@@ -124,7 +124,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   interval: 1
-  interval_first: .699999988
 --- !u!1 &497508206
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,7 +259,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   interval: 1
-  interval_first: 0
 --- !u!4 &533120496
 Transform:
   m_ObjectHideFlags: 0
@@ -385,7 +383,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   interval: 1
-  interval_first: .349999994
 --- !u!1 &909109389
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,7 +421,6 @@ MonoBehaviour:
   - {fileID: 100000, guid: 9bbae4d58bc0e48ec8e0f87dbc12542c, type: 2}
   - {fileID: 100000, guid: 52d57393f75d640f494d3fcd5836d8cb, type: 2}
   interval: 1
-  interval_first: .100000001
 --- !u!4 &909109391
 Transform:
   m_ObjectHideFlags: 0
