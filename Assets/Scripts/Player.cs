@@ -40,11 +40,13 @@ public class Player : MonoBehaviour {
 	 * OnCllisionEnter2D 
 	 * プレイヤーの当たり判定を行う関数
 	 */
+
 	void OnCollisionEnter2D(Collision2D other){
-		if (other.gameObject.CompareTag("Respawn")) {
+		if (other.gameObject.CompareTag("BlueBall") || other.gameObject.CompareTag("GreenBall") || other.gameObject.CompareTag("RedBall")) {
 			//障害物に当たったらゲームオーバー画面に遷移
 			Application.LoadLevel ("GameOver");
 			}
 
 	}
+
 }

@@ -6,4 +6,5 @@ public class Deleteball : MonoBehaviour {
 	void	OnBecameInvisible(){
 		Destroy (this.gameObject);
 		}
+
 }
