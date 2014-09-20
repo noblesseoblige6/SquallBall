@@ -13,9 +13,10 @@ GameObject:
   - 114: {fileID: 11400002}
   - 50: {fileID: 5000000}
   - 58: {fileID: 5800000}
+  - 114: {fileID: 11400004}
   m_Layer: 0
   m_Name: GreenBall_M
-  m_TagString: Untagged
+  m_TagString: GreenBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56,7 +57,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: f212507d6388d4ef7a26c12997113802, type: 2}
   m_IsTrigger: 0
-  m_Radius: .5
+  m_Radius: .879999995
   m_Center: {x: 0, y: 0}
 --- !u!114 &11400000
 MonoBehaviour:
@@ -84,6 +85,21 @@ MonoBehaviour:
   maxSpeed: 5
   direction: {x: 0, y: 0}
   isKicked: 0
+--- !u!114 &11400004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be738ce53ce914822a00e7ad263b0e18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GreenBalls:
+  - {fileID: 100000, guid: 11a841eb77e7c491fb4a09c656c09471, type: 2}
+  - {fileID: 100000}
+  - {fileID: 100000, guid: 408d9e5deb7e243e3a230a8ddbe30218, type: 2}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

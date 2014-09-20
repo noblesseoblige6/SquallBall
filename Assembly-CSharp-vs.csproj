@@ -47,6 +47,10 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Clock.cs" />
+     <Compile Include="Assets\Scripts\For_Balls\DeleteBlueBalls.cs" />
+     <Compile Include="Assets\Scripts\For_Balls\DeleteGreenBalls.cs" />
+     <Compile Include="Assets\Scripts\For_Balls\DeleteRedBalls.cs" />
+     <Compile Include="Assets\Scripts\For_Balls\Deleteball.cs" />
      <Compile Include="Assets\Scripts\For_Balls\GenBall.cs" />
      <Compile Include="Assets\Scripts\For_Balls\deleteball.cs" />
      <Compile Include="Assets\Scripts\GUIRetry.cs" />
