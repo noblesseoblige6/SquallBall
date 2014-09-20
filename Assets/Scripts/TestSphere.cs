@@ -12,6 +12,7 @@ public class TestSphere : MonoBehaviour {
 
 		//ボールを飛ばす向きが、真下にならないよう調整
 		direction = new Vector2 (0, Random.Range (0, -2));
+
 		if (rnd == 0) {
 			direction.x = Random.Range (-2f, -0.1f);
 		}
@@ -19,6 +20,7 @@ public class TestSphere : MonoBehaviour {
 		else {
 			direction.x = Random.Range (0.1f, 2f);
 		}
+
 
 
 		rigidbody2D.velocity = speed * direction;

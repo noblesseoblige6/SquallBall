@@ -13,9 +13,10 @@ GameObject:
   - 114: {fileID: 11400002}
   - 58: {fileID: 5800000}
   - 50: {fileID: 5000000}
+  - 114: {fileID: 11400004}
   m_Layer: 0
   m_Name: BlueBall_S
-  m_TagString: Untagged
+  m_TagString: BlueBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56,7 +57,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 6200000, guid: f212507d6388d4ef7a26c12997113802, type: 2}
   m_IsTrigger: 0
-  m_Radius: .5
+  m_Radius: .879999995
   m_Center: {x: 0, y: 0}
 --- !u!114 &11400000
 MonoBehaviour:
@@ -84,6 +85,21 @@ MonoBehaviour:
   maxSpeed: 5
   direction: {x: 0, y: 0}
   isKicked: 0
+--- !u!114 &11400004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06bd6472f405444758bba1dffbeac8a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BlueBalls:
+  - {fileID: 100000, guid: 0ef0be98473d8435fbb63f703ec92293, type: 2}
+  - {fileID: 100000, guid: f7827941154f543189d4012e5a3752a9, type: 2}
+  - {fileID: 100000}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
