@@ -15,7 +15,9 @@ public class Score : MonoBehaviour {
 		GUILayout.EndArea();
 	}
 
-	void addScorre(int input){
-
+	public void addScore(int input){
+		score = score + input;
 	}
+
+
 }
