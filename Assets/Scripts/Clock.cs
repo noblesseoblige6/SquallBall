@@ -19,6 +19,7 @@ public class Clock : MonoBehaviour {
 		timer = 0.0f;
 	}
 	void OnGUI(){
+
 		Vector2 timerPos = new Vector2 (Screen.width - Screen.width/3.0f, 20.0f);
 		GUILayout.BeginArea(new Rect(timerPos.x, timerPos.y, 400.0f, 40.0f));
 		GUILayout.Box(String.Format("{1:00}:{2:00}:{3:00}", 
