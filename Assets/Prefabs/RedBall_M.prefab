@@ -43,7 +43,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_FixedAngle: 0
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -93,8 +93,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04745ba5c9660fe4387fbde0a67fc7c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  maxSpeed: 5
+  speed: 2
+  maxSpeed: 2
   direction: {x: 0, y: 0}
   isKicked: 0
 --- !u!114 &11400004

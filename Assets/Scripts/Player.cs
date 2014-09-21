@@ -27,11 +27,6 @@ public class Player : MonoBehaviour {
 					TestSphere ballProp = obstacle.GetComponent<TestSphere>();
 					ballProp.speed = ballProp.maxSpeed/distance;
 
-					if(!ballProp.isKicked){
-						ballProp.isKicked = true;
-						ballProp.direction *= -1;
-						ballProp.rigidbody2D.velocity = ballProp.speed * ballProp.direction;
-					}
 				}
 			}
 		}
