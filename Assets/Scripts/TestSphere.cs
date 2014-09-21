@@ -3,15 +3,15 @@ using System.Collections;
 
 public class TestSphere : MonoBehaviour
 {
-		public float speed = 5.0f;
-		public float maxSpeed = 5.0f;
+		public float speed = 3.0f;
+		public float maxSpeed = 3.0f;
 		public Vector2 direction;
-		public Vector2 touchedPos = new Vector2 ();
+		public Vector2 touchedPos;
+		public bool isTouched = false;
 		private int rnd = Random.Range (0, 2);
 		// Use this for initialization
 		void Start ()
 		{
-
 				//ボールを飛ばす向きが、真下にならないよう調整
 				direction = new Vector2 (0, Random.Range (0, -2));
 
@@ -26,7 +26,6 @@ public class TestSphere : MonoBehaviour
 				rigidbody2D.velocity = speed * direction;
 				
 		}
-	
 		// Update is called once per frame
 		void Update ()
 		{
@@ -35,7 +34,21 @@ public class TestSphere : MonoBehaviour
 		//マウスクリックされたとき
 		void OnMouseDown ()
 		{
+				touchedPos = (Vector2)Input.mousePosition;
+				isTouched = true;
 				rigidbody2D.velocity *= 0;
+		}
+		//マウスボタンから離れたとき
+		void onMouseUp ()
+		{
+				//オブジェクトをクリックしていればはじいた方向にオブジェクトを飛ばす
+				if (isTouched) {
+						float bias = 30.0f;
+						float length = ((Vector2)Input.mousePosition - touchedPos).magnitude / bias;
+						direction = ((Vector2)Input.mousePosition - touchedPos).normalized;
+						rigidbody2D.velocity = length * direction;
+						isTouched = false;
+				}
 		}
 
 		void setDirection (Vector2 dirc)
@@ -47,8 +60,10 @@ public class TestSphere : MonoBehaviour
 		void checkTouch ()
 		{
 				if (Input.touchCount > 0) {
+
 						Touch touch = Input.GetTouch (0);
 						if (touch.phase == TouchPhase.Began) {
+
 								Vector2 point = touch.position;
 								RaycastHit hit = new RaycastHit ();
 								Ray ray = Camera.main.ScreenPointToRay (point);
@@ -58,17 +73,15 @@ public class TestSphere : MonoBehaviour
 								}
 								//オブジェクトにあたっているか判定
 								if (Physics.Raycast (ray, out hit)) {
-										touchedPos = point;
 										//あたっていればそのオブジェクトのOnMouseDownを呼び出す
-										//hit.transform.gameObject.SendMessage ("OnMouseDown");
-										OnMouseDown();
+										OnMouseDown ();
 								}
-								if (touch.phase == TouchPhase.Ended) {
-										direction = touch.position - touchedPos;
-										rigidbody2D.velocity = speed * direction;
-
-								}
+						} 
+			//タッチ操作が終わったとき
+			else if (touch.phase == TouchPhase.Ended && isTouched) {
+								onMouseUp ();
 						}
+						
 				}
 		}
 
