@@ -19,8 +19,15 @@ public class DeleteGreenBalls : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D collis){
 		if (collis.gameObject.CompareTag ("GreenBall")) {
 			Debug.Log (collis.gameObject.name);
-			FindObjectOfType<Score>().addScore(50);
 
+			//if(this.gameObject == GreenBalls[2]){
+			//	FindObjectOfType<Score>().addScore(50);
+			//}
+			//else{
+
+			FindObjectOfType<Score>().addScore(10);
+				
+			//}
 			Destroy (this.gameObject);
 			Destroy (collis.gameObject);
 

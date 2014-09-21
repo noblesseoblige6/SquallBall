@@ -7,6 +7,8 @@ public class TestSphere : MonoBehaviour {
 	public Vector2 direction;
 	public bool isKicked;
 	private int rnd = Random.Range (0,2);
+
+
 	// Use this for initialization
 	void Start () {
 
