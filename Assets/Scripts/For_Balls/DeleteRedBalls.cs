@@ -20,7 +20,7 @@ public class DeleteRedBalls : MonoBehaviour {
 		if (collis.gameObject.CompareTag ("RedBall")) {
 			Debug.Log (collis.gameObject.name);
 		
-			//点数に重みをつける予定
+			//ボールの大きさに応じて点数に重みをつける予定
 			//if(this.gameObject == RedBalls[2]){
 			//	FindObjectOfType<Score>().addScore(50);
 			//}
