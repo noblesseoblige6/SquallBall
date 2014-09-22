@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class DeleteGreenBalls : MonoBehaviour {
-
+	//大きさの判別用に使う予定
 	public GameObject[] GreenBalls = new GameObject[3];
 
 
@@ -15,10 +15,20 @@ public class DeleteGreenBalls : MonoBehaviour {
 	void Update () {
 	
 	}
-	// 同じ色のボールがぶつかったら削除
+	// 同じ色のボールがぶつかったら点を加えて削除
 	void OnCollisionEnter2D(Collision2D collis){
 		if (collis.gameObject.CompareTag ("GreenBall")) {
 			Debug.Log (collis.gameObject.name);
+
+			//点数に重みをつける予定
+			//if(this.gameObject == GreenBalls[2]){
+			//	FindObjectOfType<Score>().addScore(50);
+			//}
+			//else{
+
+			FindObjectOfType<Score>().addScore(10);
+				
+			//}
 			Destroy (this.gameObject);
 			Destroy (collis.gameObject);
 
