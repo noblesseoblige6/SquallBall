@@ -20,6 +20,7 @@ public class DeleteGreenBalls : MonoBehaviour {
 		if (collis.gameObject.CompareTag ("GreenBall")) {
 			Debug.Log (collis.gameObject.name);
 
+			//点数に重みをつける予定
 			//if(this.gameObject == GreenBalls[2]){
 			//	FindObjectOfType<Score>().addScore(50);
 			//}
