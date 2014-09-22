@@ -29,7 +29,7 @@ public class Score : MonoBehaviour {
 		GUILayout.Box(String.Format("Score: {0}", this.score, GUILayout.Width(100), GUILayout.Height(40)));
 		GUILayout.EndArea();
 
-		// high score 表示
+		// high score 表示(する?)
 		/*
 		Vector2 high_scorePos = new Vector2 (Screen.width - Screen.width/3.0f, 80.0f);
 		GUILayout.BeginArea(new Rect(high_scorePos.x, high_scorePos.y, 200.0f, 40.0f));
@@ -44,13 +44,13 @@ public class Score : MonoBehaviour {
 
 		score = score + input*number_of_combo;
 
-		//　前回にボールを消してから1秒以内だったら
+		//　前回にボールを消してから1秒以内だったら コンボ数を++
 		if ( FindObjectOfType<Clock> ().timer - combo_time < 1) {
 			number_of_combo++;
 
 		}
 
-		//そうでなければ
+		//そうでなければ コンボ数を1に
 		else {
 
 			number_of_combo = 1;
