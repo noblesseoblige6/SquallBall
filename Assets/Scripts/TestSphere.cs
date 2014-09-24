@@ -95,9 +95,11 @@ public class TestSphere : MonoBehaviour
 		bool checkDisPlayer (Vector2 touchPosition)
 		{
 				Player player = GameObject.Find ("main").GetComponent<Player> ();
+				//プレイヤーと障害物の距離を計算
 				float disObstacleAndPlayer = Mathf.Abs ((touchPosition - (Vector2)player.transform.position).magnitude);
+				//障害物を蹴れる半径を計算		
 				float kickRange = player.getKickRange ();
-				
+				//範囲内であれば蹴れる
 				if (disObstacleAndPlayer <= kickRange) {
 						return true;
 				}
