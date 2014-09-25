@@ -4,7 +4,7 @@ using System;
 public class Score : MonoBehaviour {
 	private int score;
 	private int high_score=100;
-	private int number_of_combo = 1;
+	private int number_of_combo = 0;
 	private float combo_time = 0;
 
 
@@ -42,7 +42,7 @@ public class Score : MonoBehaviour {
 	//スコア加算
 	public void addScore(int input){
 
-		score = score + input*number_of_combo;
+		score = score + input + 10 *number_of_combo;
 
 		//　前回にボールを消してから1秒以内だったら コンボ数を++
 		if ( FindObjectOfType<Clock> ().timer - combo_time < 1) {
@@ -50,10 +50,10 @@ public class Score : MonoBehaviour {
 
 		}
 
-		//そうでなければ コンボ数を1に
+		//そうでなければ コンボ数を0に
 		else {
 
-			number_of_combo = 1;
+			number_of_combo = 0;
 
 		}
 

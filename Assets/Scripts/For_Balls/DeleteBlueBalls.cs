@@ -20,15 +20,17 @@ public class DeleteBlueBalls : MonoBehaviour {
 		if (collis.gameObject.CompareTag ("BlueBall")) {
 			Debug.Log (collis.gameObject.name);
 
-			//ボールの大きさに応じて点数に重みをつける予定
-			//if(this.gameObject == BlueBalls[2]){
-				//FindObjectOfType<Score>().addScore(50);
-			//}
-
-			//else{
+			//ボールの大きさに応じて点数に重みをつける
+			if(this.gameObject == BlueBalls[0] && collis.gameObject == BlueBalls[0])
+				FindObjectOfType<Score>().addScore(20);
+			else if(this.gameObject == BlueBalls[1] && collis.gameObject == BlueBalls[1])
+				FindObjectOfType<Score>().addScore (30);
+			else if(this.gameObject == BlueBalls[2] && collis.gameObject == BlueBalls[2])
+				FindObjectOfType<Score>().addScore (50);
+			else
 				FindObjectOfType<Score>().addScore(10);
 
-			//}
+
 
 			Destroy (this.gameObject);
 			Destroy (collis.gameObject);
