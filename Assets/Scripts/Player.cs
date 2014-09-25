@@ -4,7 +4,7 @@ using System.Collections;
 public class Player : MonoBehaviour {
 	public float speed = 4.0f;
 	public Vector2 direction;
-	private float range = 3.0f;
+	private float kickRange = 400.0f;
 
 
 	// Update is called once per frame
@@ -13,23 +13,6 @@ public class Player : MonoBehaviour {
 		//方向を求める
 		direction = new Vector2(x, 0).normalized;
 		rigidbody2D.velocity = direction * speed;
-
-
-		if (Input.GetKey ("space")) {
-			//タグでRespawnとつけられたオブジェクトを取得
-			GameObject[] obstacles = GameObject.FindGameObjectsWithTag("Respawn");
-			//それらの中で距離がrange以内のものはベクトルを逆にする
-			foreach(GameObject obstacle in obstacles){
-				Vector2 relativeVec = obstacle.transform.position - this.transform.position;
-				float distance = relativeVec.magnitude;
-				if(distance < range){
-					print (obstacle.GetComponent<TestSphere>());
-					TestSphere ballProp = obstacle.GetComponent<TestSphere>();
-					ballProp.speed = ballProp.maxSpeed/distance;
-
-				}
-			}
-		}
 	}
 	/*
 	 * OnCllisionEnter2D 
@@ -42,6 +25,12 @@ public class Player : MonoBehaviour {
 			Application.LoadLevel ("GameOver");
 			}
 
+	}
+	
+	  //getKickRange()
+	  //障害物を蹴れる範囲を返す
+	public float getKickRange(){
+		return kickRange;
 	}
 
 }
