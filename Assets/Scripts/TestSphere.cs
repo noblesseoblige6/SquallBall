@@ -8,9 +8,14 @@ public class TestSphere : MonoBehaviour
 		public Vector2 direction;
 		public Vector2 touchedPos;
 		public bool isTouched = false;
+
+		private bool isSlowdown = false;		//スロー状態か否か
+		private float SlowdownStartTime = 0;	//スロー状態開始時刻
+		private float SlowdownEndTime = 0;		//スロー状態終了時刻
+	
 		private int rnd = Random.Range (0, 2);
 
-		// Use this for initialization
+	// Use this for initialization
 		void Start ()
 		{
 				//ボールを飛ばす向きが、真下にならないよう調整
@@ -31,7 +36,16 @@ public class TestSphere : MonoBehaviour
 		void Update ()
 		{
 				checkTouch ();
+
+		//Kamada < スロー状態が1秒続いたら, スロー解除
+				if (isSlowdown == true && FindObjectOfType<Clock> ().timer - SlowdownStartTime > 1) {
+
+					isSlowdown = false;
+					Time.timeScale = Time.timeScale * 3;
+					SlowdownEndTime = FindObjectOfType<Clock> ().timer;
+				}
 		}
+
 		//マウスクリックされたとき
 		void OnMouseDown ()
 		{
@@ -42,6 +56,14 @@ public class TestSphere : MonoBehaviour
 
 						isTouched = true;
 						rigidbody2D.velocity *= 0;
+
+			//Kamada < クリックされたボール以外を遅くする処理 if (スロー状態でなく,前回のスロー状態から3秒以上たっていたら)
+						if(isSlowdown == false && FindObjectOfType<Clock> ().timer - SlowdownEndTime > 3){
+				
+							Time.timeScale = Time.timeScale / 3;
+							isSlowdown = true;
+							SlowdownStartTime = FindObjectOfType<Clock> ().timer;
+						}
 				}
 		}
 		//マウスボタンから離れたとき
@@ -101,6 +123,7 @@ public class TestSphere : MonoBehaviour
 				float kickRange = player.getKickRange ();
 				//範囲内であれば蹴れる
 				if (disObstacleAndPlayer <= kickRange) {
+
 						return true;
 				}
 				return false;
