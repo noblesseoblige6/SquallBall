@@ -528,7 +528,7 @@ MonoBehaviour:
   - {fileID: 100000, guid: 8ad24e0fa368340bd8aa43afeb4d0013, type: 2}
   - {fileID: 100000, guid: 9bbae4d58bc0e48ec8e0f87dbc12542c, type: 2}
   - {fileID: 100000, guid: 52d57393f75d640f494d3fcd5836d8cb, type: 2}
-  interval: .5
+  interval: .300000012
 --- !u!4 &909109391
 Transform:
   m_ObjectHideFlags: 0

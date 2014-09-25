@@ -28,11 +28,13 @@ public class TestSphere : MonoBehaviour
 				}
 
 
-
+				Initialize ();
 				rigidbody2D.velocity = speed * direction;
 				
 		}
-		// Update is called once per frame
+
+
+	// Update is called once per frame
 		void Update ()
 		{
 				checkTouch ();
@@ -41,12 +43,20 @@ public class TestSphere : MonoBehaviour
 				if (isSlowdown == true && FindObjectOfType<Clock> ().timer - SlowdownStartTime > 1) {
 
 					isSlowdown = false;
-					Time.timeScale = Time.timeScale * 3;
+					Time.timeScale = 1;
 					SlowdownEndTime = FindObjectOfType<Clock> ().timer;
 				}
 		}
 
-		//マウスクリックされたとき
+	//初期化
+		void Initialize(){
+			this.isSlowdown = false;
+			this.SlowdownEndTime = 0;
+			this.SlowdownStartTime = 0;
+		}
+
+
+	//マウスクリックされたとき
 		void OnMouseDown ()
 		{
 				
