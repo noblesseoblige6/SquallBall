@@ -4,7 +4,7 @@ using System.Collections;
 public class Player : MonoBehaviour {
 	public float speed = 4.0f;
 	public Vector2 direction;
-	private float kickRange = 400.0f;
+	private float kickRange = 2.5f;
 
 
 	// Update is called once per frame
@@ -32,5 +32,8 @@ public class Player : MonoBehaviour {
 	public float getKickRange(){
 		return kickRange;
 	}
+	public Vector2 getPlayerPos(){
 
+		return transform.position;
+	}
 }

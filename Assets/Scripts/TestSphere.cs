@@ -59,8 +59,9 @@ public class TestSphere : MonoBehaviour
 	//マウスクリックされたとき
 		void OnMouseDown ()
 		{
-				touchedPos = (Vector2)Input.mousePosition;
-				//プレイヤーとの距離をチェック
+				
+		touchedPos = (Vector2)Camera.main.ScreenToWorldPoint (Input.mousePosition);
+			//プレイヤーとの距離をチェック
 				if (checkDisPlayer (touchedPos)) {
 
 						isTouched = true;
@@ -126,14 +127,14 @@ public class TestSphere : MonoBehaviour
 		bool checkDisPlayer (Vector2 touchPosition)
 		{
 				Player player = GameObject.Find ("main").GetComponent<Player> ();
-				//プレイヤーと障害物の距離を計算
-				float disObstacleAndPlayer = Mathf.Abs ((touchPosition - (Vector2)player.transform.position).magnitude);
-
+				Vector2 playerPos = player.getPlayerPos();
+				//タッチした位置とplayerの距離を計算
+				float disObstacleAndPlayer = (touchPosition - playerPos).magnitude;
 				//障害物を蹴れる半径を計算		
 				float kickRange = player.getKickRange ();
+				
 				//範囲内であれば蹴れる
-				if (disObstacleAndPlayer <= kickRange) {
-
+			if (disObstacleAndPlayer < kickRange) {
 						return true;
 				}
 				return false;
