@@ -9,6 +9,7 @@ public class TestSphere : MonoBehaviour
 		public Vector2 touchedPos;
 		public bool isTouched = false;
 		private int rnd = Random.Range (0, 2);
+
 		// Use this for initialization
 		void Start ()
 		{
@@ -34,9 +35,14 @@ public class TestSphere : MonoBehaviour
 		//マウスクリックされたとき
 		void OnMouseDown ()
 		{
+
 				touchedPos = (Vector2)Input.mousePosition;
-				isTouched = true;
-				rigidbody2D.velocity *= 0;
+				//プレイヤーとの距離をチェック
+				if (checkDisPlayer (touchedPos)) {
+
+						isTouched = true;
+						rigidbody2D.velocity *= 0;
+				}
 		}
 		//マウスボタンから離れたとき
 		void onMouseUp ()
@@ -63,7 +69,6 @@ public class TestSphere : MonoBehaviour
 
 						Touch touch = Input.GetTouch (0);
 						if (touch.phase == TouchPhase.Began) {
-
 								Vector2 point = touch.position;
 								RaycastHit hit = new RaycastHit ();
 								Ray ray = Camera.main.ScreenPointToRay (point);
@@ -74,7 +79,9 @@ public class TestSphere : MonoBehaviour
 								//オブジェクトにあたっているか判定
 								if (Physics.Raycast (ray, out hit)) {
 										//あたっていればそのオブジェクトのOnMouseDownを呼び出す
+															
 										OnMouseDown ();
+										
 								}
 						} 
 			//タッチ操作が終わったとき
@@ -84,5 +91,18 @@ public class TestSphere : MonoBehaviour
 						
 				}
 		}
-
+		//障害物とプレイヤーの距離を測る
+		bool checkDisPlayer (Vector2 touchPosition)
+		{
+				Player player = GameObject.Find ("main").GetComponent<Player> ();
+				//プレイヤーと障害物の距離を計算
+				float disObstacleAndPlayer = Mathf.Abs ((touchPosition - (Vector2)player.transform.position).magnitude);
+				//障害物を蹴れる半径を計算		
+				float kickRange = player.getKickRange ();
+				//範囲内であれば蹴れる
+				if (disObstacleAndPlayer <= kickRange) {
+						return true;
+				}
+				return false;
+		}
 }
