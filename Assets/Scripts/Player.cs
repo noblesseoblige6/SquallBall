@@ -26,7 +26,7 @@ public class Player : MonoBehaviour {
 			}
 
 	}
-	
+
 	  //getKickRange()
 	  //障害物を蹴れる範囲を返す
 	public float getKickRange(){

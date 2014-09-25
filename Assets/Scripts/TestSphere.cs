@@ -28,11 +28,13 @@ public class TestSphere : MonoBehaviour
 				}
 
 
-
+				Initialize ();
 				rigidbody2D.velocity = speed * direction;
 				
 		}
-		// Update is called once per frame
+
+
+	// Update is called once per frame
 		void Update ()
 		{
 				checkTouch ();
@@ -41,15 +43,22 @@ public class TestSphere : MonoBehaviour
 				if (isSlowdown == true && FindObjectOfType<Clock> ().timer - SlowdownStartTime > 1) {
 
 					isSlowdown = false;
-					Time.timeScale = Time.timeScale * 3;
+					Time.timeScale = 1;
 					SlowdownEndTime = FindObjectOfType<Clock> ().timer;
 				}
 		}
 
-		//マウスクリックされたとき
+	//初期化
+		void Initialize(){
+			this.isSlowdown = false;
+			this.SlowdownEndTime = 0;
+			this.SlowdownStartTime = 0;
+		}
+
+
+	//マウスクリックされたとき
 		void OnMouseDown ()
 		{
-
 				touchedPos = (Vector2)Input.mousePosition;
 				//プレイヤーとの距離をチェック
 				if (checkDisPlayer (touchedPos)) {
@@ -119,6 +128,7 @@ public class TestSphere : MonoBehaviour
 				Player player = GameObject.Find ("main").GetComponent<Player> ();
 				//プレイヤーと障害物の距離を計算
 				float disObstacleAndPlayer = Mathf.Abs ((touchPosition - (Vector2)player.transform.position).magnitude);
+
 				//障害物を蹴れる半径を計算		
 				float kickRange = player.getKickRange ();
 				//範囲内であれば蹴れる

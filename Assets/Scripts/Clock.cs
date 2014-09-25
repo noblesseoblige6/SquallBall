@@ -15,6 +15,8 @@ public class Clock : MonoBehaviour {
 	}
 
 	void reset(){
+		//ゲームスピードの初期化
+		Time.timeScale = 1;
 
 		timer = 0.0f;
 	}
