@@ -125,7 +125,6 @@ public class TestSphere : MonoBehaviour
 				
 				//範囲内であれば蹴れる
 			if (disObstacleAndPlayer < kickRange) {
-						Debug.Log("In TestSphere "+disObstacleAndPlayer);
 						return true;
 				}
 				return false;

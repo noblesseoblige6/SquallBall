@@ -9,8 +9,9 @@ public class PlayerRange : MonoBehaviour {
 	void Start () {
 		player = GameObject.Find("main").GetComponent<Player> ();
 		playerPos = player.getPlayerPos();
-		Debug.Log ("In PlayerRange "+playerPos);
 		this.transform.position = playerPos;
+
+		//プレイヤーの弾ける範囲に基づいて画像をスケール
 		float imageSize = 600f; //画像のサイズ
 		float offset = 200f; //画像サイズに基づいてスケールするための定数
 		float playerRange = 200*player.getKickRange () / imageSize;
@@ -19,6 +20,7 @@ public class PlayerRange : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		//@comment プレイヤーの動きに合わせて動く
 		player = GameObject.Find("main").GetComponent<Player> ();
 		playerPos = player.transform.position;
 		this.transform.position = playerPos;
