@@ -18,8 +18,6 @@ public class DeleteGreenBalls : MonoBehaviour {
 	// 同じ色のボールがぶつかったら点を加えて削除
 	void OnCollisionEnter2D(Collision2D collis){
 		if (collis.gameObject.CompareTag ("GreenBall")) {
-			Debug.Log (collis.gameObject.name);
-
 			//ボールの大きさに応じて点数に重みをつける予定
 			//if(this.gameObject == GreenBalls[2]){
 			//	FindObjectOfType<Score>().addScore(50);
