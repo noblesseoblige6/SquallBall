@@ -60,7 +60,12 @@ public class TestSphere : MonoBehaviour
 		//マウスクリックされたとき
 		void OnMouseDown ()
 		{
-				//@akama 蹴られればレイヤーを変更
+		touchedPos = (Vector2)Camera.main.ScreenToWorldPoint (Input.mousePosition);
+
+		//プレイヤーとの距離をチェック
+				if (checkDisPlayer (touchedPos)) {
+
+			//@akama 蹴られればレイヤーを変更
 				if (gameObject.CompareTag ("RedBall") ||
 						gameObject.CompareTag ("GreenBall") || 
 						gameObject.CompareTag ("BlueBall")
@@ -68,29 +73,11 @@ public class TestSphere : MonoBehaviour
 						gameObject.layer = 8;
 				}
 
-				touchedPos = (Vector2)Camera.main.ScreenToWorldPoint (Input.mousePosition);
-				//プレイヤーとの距離をチェック
-			//	if (checkDisPlayer (touchedPos)) {
 
-			/*
-		{
+		}	/*
 
-			isTouched = true;
-			rigidbody2D.velocity *= 0;
 
-			//Kamada < tap したボールの tag にKicked を加える
-			if(rigidbody2D.gameObject.CompareTag("BlueBall"))
-			{
-				rigidbody2D.gameObject.tag = "KickedBlueBall";
-			}
-			if(rigidbody2D.gameObject.CompareTag("RedBall"))
-			{
-				rigidbody2D.gameObject.tag = "KickedRedBall";
-			}
-			if(rigidbody2D.gameObject.CompareTag("GreenBall"))
-			{
-				rigidbody2D.gameObject.tag = "KickedGreenBall";
-			}
+
 
 						//Kamada < クリックされたボール以外を遅くする処理 if (スロー状態でなく,前回のスロー状態から3秒以上たっていたら)
 						if (isSlowdown == false && FindObjectOfType<Clock> ().timer - SlowdownEndTime > 3) {
@@ -99,8 +86,8 @@ public class TestSphere : MonoBehaviour
 								isSlowdown = true;
 								SlowdownStartTime = FindObjectOfType<Clock> ().timer;
 						}
-				}
-		}
+
+
 			*/
 	}
 		//マウスボタンから離れたとき
