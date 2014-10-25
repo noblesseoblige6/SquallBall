@@ -5,27 +5,9 @@ public class DeleteRedBalls : MonoBehaviour {
 	//大きさの判別用に使う予定
 	public GameObject[] RedBalls = new GameObject[3];
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
+	// 同じ色のボールがぶつかったら点を加えて削除
 	void OnCollisionEnter2D(Collision2D collis){
-
-		別色のボールのKicked ボールがぶつかったら, Kicked フラグをたてる
-		if (collis.gameObject.CompareTag ("KickedBlueBall") || collis.gameObject.CompareTag ("KickedGreenBall")) 
-		{
-			fragKicked();
-		}
-
-		
-		// 同じ色の Kicked ボールがぶつかったら点を加えて削除
-		if (collis.gameObject.CompareTag ("KickedRedBall")) {
+		if (collis.gameObject.CompareTag ("RedBall") && collis.gameObject.layer == 8) {
 		
 			//ボール大 同士
 			if(this.gameObject == RedBalls[0] && collis.gameObject == RedBalls[0])
