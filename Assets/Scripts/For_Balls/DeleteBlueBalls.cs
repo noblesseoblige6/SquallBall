@@ -18,14 +18,14 @@ public class DeleteBlueBalls : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D collis){
 
 		//別色のボールのKicked ボールがぶつかったら, Kicked フラグをたてる
-		if (collis.gameObject.CompareTag ("KickedRedBall") || collis.gameObject.CompareTag ("KickedGreenBall")) 
-		{
-			fragKicked();
+		//if (collis.gameObject.CompareTag ("KickedRedBall") || collis.gameObject.CompareTag ("KickedGreenBall")) 
+		//{
+		//	fragKicked();
 
-		}
+		//}
 
 		// 同じ色の Kicked ボールがぶつかったら点を加えて削除
-		if (collis.gameObject.CompareTag ("KickedBlueBall"))
+		if (collis.gameObject.CompareTag ("BlueBall"))
 		{
 
 			//ボールの大きさに応じて点数に重みをつける

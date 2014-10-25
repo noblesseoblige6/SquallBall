@@ -70,7 +70,7 @@ public class TestSphere : MonoBehaviour
 
 				touchedPos = (Vector2)Camera.main.ScreenToWorldPoint (Input.mousePosition);
 				//プレイヤーとの距離をチェック
-				if (checkDisPlayer (touchedPos)) {
+			//	if (checkDisPlayer (touchedPos)) {
 
 			/*
 		{

@@ -17,7 +17,7 @@ public class DeleteRedBalls : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D collis){
 
-		//別色のボールのKicked ボールがぶつかったら, Kicked フラグをたてる
+		別色のボールのKicked ボールがぶつかったら, Kicked フラグをたてる
 		if (collis.gameObject.CompareTag ("KickedBlueBall") || collis.gameObject.CompareTag ("KickedGreenBall")) 
 		{
 			fragKicked();
