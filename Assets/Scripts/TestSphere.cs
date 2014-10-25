@@ -59,7 +59,14 @@ public class TestSphere : MonoBehaviour
 	//マウスクリックされたとき
 		void OnMouseDown ()
 		{
-				
+		//@akama 蹴られればレイヤーを変更
+		if(gameObject.CompareTag("RedBall") ||
+		   gameObject.CompareTag("GreenBall") || 
+		   gameObject.CompareTag("BlueBall")
+		   ) {
+			gameObject.layer = 8;
+		}
+
 		touchedPos = (Vector2)Camera.main.ScreenToWorldPoint (Input.mousePosition);
 			//プレイヤーとの距離をチェック
 				if (checkDisPlayer (touchedPos)) {
@@ -86,7 +93,7 @@ public class TestSphere : MonoBehaviour
 						direction = ((Vector2)Input.mousePosition - touchedPos).normalized;
 						rigidbody2D.velocity = length * direction;
 						isTouched = false;
-				}
+						}
 		}
 
 		void setDirection (Vector2 dirc)
@@ -116,7 +123,7 @@ public class TestSphere : MonoBehaviour
 										
 								}
 						} 
-			//タッチ操作が終わったとき
+			//@akamaタッチ操作が終わったとき
 			else if (touch.phase == TouchPhase.Ended && isTouched) {
 								onMouseUp ();
 						}
@@ -139,4 +146,5 @@ public class TestSphere : MonoBehaviour
 				}
 				return false;
 		}
+	
 }
