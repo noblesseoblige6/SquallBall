@@ -5,19 +5,9 @@ public class DeleteBlueBalls : MonoBehaviour {
 	//大きさの判別用に使う予定
 	public GameObject[] BlueBalls = new GameObject[3];
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
 	// 同じ色のボールがぶつかったら点を加えて削除
 	void OnCollisionEnter2D(Collision2D collis){
-		if (collis.gameObject.CompareTag ("BlueBall")) {
+		if (collis.gameObject.CompareTag ("BlueBall") && collis.gameObject.layer == 8) {
 
 			//ボールの大きさに応じて点数に重みをつける
 			//ボール大 同士
