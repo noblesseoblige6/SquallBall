@@ -59,19 +59,14 @@ public class TestSphere : MonoBehaviour
 	//マウスクリックされたとき
 		void OnMouseDown ()
 		{
-		//@akama 蹴られればタグを変更
-		if(gameObject.CompareTag("RedBall")) {
-			gameObject.tag = "kickedRedBall";
+		//@akama 蹴られればレイヤーを変更
+		if(gameObject.CompareTag("RedBall") ||
+		   gameObject.CompareTag("GreenBall") || 
+		   gameObject.CompareTag("BlueBall")
+		   ) {
 			gameObject.layer = 8;
 		}
-		else if(gameObject.CompareTag("GreenBall")) {
-			gameObject.tag = "kickedGreenBall";
-			gameObject.layer = 8;
-		}
-		else if(gameObject.CompareTag("BlueBall")) {
-			gameObject.tag = "kickedBlueBall";
-			gameObject.layer = 8;
-		}
+
 		touchedPos = (Vector2)Camera.main.ScreenToWorldPoint (Input.mousePosition);
 			//プレイヤーとの距離をチェック
 				if (checkDisPlayer (touchedPos)) {

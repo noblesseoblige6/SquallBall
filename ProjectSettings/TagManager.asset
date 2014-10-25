@@ -4,11 +4,11 @@
 TagManager:
   tags:
   - BlueBall
-  - kickedBlueBall
+  - 
   - RedBall
   - GreenBall
-  - kickedRedBall
-  - kickedGreenBall
+  - 
+  - 
   - InvisibleWall
   - 
   Builtin Layer 0: Default
