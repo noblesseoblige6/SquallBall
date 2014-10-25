@@ -71,24 +71,21 @@ public class TestSphere : MonoBehaviour
 						gameObject.CompareTag ("BlueBall")
 		   ) {
 						gameObject.layer = 8;
+
+				//Kamada < クリックされたボール以外を遅くする処理 if (スロー状態でなく,前回のスロー状態から3秒以上たっていたら <kokogaumakuikanai)
+				if (isSlowdown == false && FindObjectOfType<Clock> ().timer - SlowdownEndTime > 3) {
+					
+					Time.timeScale = 0.33f;
+					isSlowdown = true;
+					SlowdownStartTime = FindObjectOfType<Clock> ().timer;
 				}
+			}
+			
+			
+		}		
 
 
-		}	/*
-
-
-
-
-						//Kamada < クリックされたボール以外を遅くする処理 if (スロー状態でなく,前回のスロー状態から3秒以上たっていたら)
-						if (isSlowdown == false && FindObjectOfType<Clock> ().timer - SlowdownEndTime > 3) {
-				
-								Time.timeScale = Time.timeScale / 3;
-								isSlowdown = true;
-								SlowdownStartTime = FindObjectOfType<Clock> ().timer;
-						}
-
-
-			*/
+			
 	}
 		//マウスボタンから離れたとき
 		void onMouseUp ()
