@@ -9,10 +9,7 @@ public class TestSphere : MonoBehaviour
 		public Vector2 touchedPos;
 		public bool isTouched = false;
 
-		private bool isSlowdown = false;		//スロー状態か否か
-		private float SlowdownStartTime = 0;	//スロー状態開始時刻
-		private float SlowdownEndTime = 0;		//スロー状態終了時刻
-	
+
 		private int rnd = Random.Range (0, 2);
 
 	// Use this for initialization
@@ -28,7 +25,6 @@ public class TestSphere : MonoBehaviour
 				}
 
 
-				Initialize ();
 				rigidbody2D.velocity = speed * direction;
 				
 		}
@@ -39,43 +35,50 @@ public class TestSphere : MonoBehaviour
 		{
 				checkTouch ();
 
-		//Kamada < スロー状態が1秒続いたら, スロー解除
-				if (isSlowdown == true && FindObjectOfType<Clock> ().timer - SlowdownStartTime > 1) {
 
-					isSlowdown = false;
-					Time.timeScale = 1;
-					SlowdownEndTime = FindObjectOfType<Clock> ().timer;
-				}
 		}
 
-	//初期化
-		void Initialize(){
-			this.isSlowdown = false;
-			this.SlowdownEndTime = 0;
-			this.SlowdownStartTime = 0;
-		}
+
 
 
 	//マウスクリックされたとき
 		void OnMouseDown ()
 		{
-				
+		//@akama 蹴られればレイヤーを変更
+		if(gameObject.CompareTag("RedBall") ||
+		   gameObject.CompareTag("GreenBall") || 
+		   gameObject.CompareTag("BlueBall")
+		   ) {
+			gameObject.layer = 8;
+		}
+
 		touchedPos = (Vector2)Camera.main.ScreenToWorldPoint (Input.mousePosition);
 			//プレイヤーとの距離をチェック
-				if (checkDisPlayer (touchedPos)) {
+			if (checkDisPlayer (touchedPos)) 
 
-						isTouched = true;
-						rigidbody2D.velocity *= 0;
+			/*
+		{
 
-			//Kamada < クリックされたボール以外を遅くする処理 if (スロー状態でなく,前回のスロー状態から3秒以上たっていたら)
-						if(isSlowdown == false && FindObjectOfType<Clock> ().timer - SlowdownEndTime > 3){
-				
-							Time.timeScale = Time.timeScale / 3;
-							isSlowdown = true;
-							SlowdownStartTime = FindObjectOfType<Clock> ().timer;
-						}
-				}
+			isTouched = true;
+			rigidbody2D.velocity *= 0;
+
+			//Kamada < tap したボールの tag にKicked を加える
+			if(rigidbody2D.gameObject.CompareTag("BlueBall"))
+			{
+				rigidbody2D.gameObject.tag = "KickedBlueBall";
+			}
+			if(rigidbody2D.gameObject.CompareTag("RedBall"))
+			{
+				rigidbody2D.gameObject.tag = "KickedRedBall";
+			}
+			if(rigidbody2D.gameObject.CompareTag("GreenBall"))
+			{
+				rigidbody2D.gameObject.tag = "KickedGreenBall";
+			}
+
 		}
+			*/
+	}
 		//マウスボタンから離れたとき
 		void onMouseUp ()
 		{
@@ -86,7 +89,7 @@ public class TestSphere : MonoBehaviour
 						direction = ((Vector2)Input.mousePosition - touchedPos).normalized;
 						rigidbody2D.velocity = length * direction;
 						isTouched = false;
-				}
+						}
 		}
 
 		void setDirection (Vector2 dirc)
@@ -116,7 +119,7 @@ public class TestSphere : MonoBehaviour
 										
 								}
 						} 
-			//タッチ操作が終わったとき
+			//@akamaタッチ操作が終わったとき
 			else if (touch.phase == TouchPhase.Ended && isTouched) {
 								onMouseUp ();
 						}
@@ -124,7 +127,7 @@ public class TestSphere : MonoBehaviour
 				}
 		}
 		//障害物とプレイヤーの距離を測る
-		bool checkDisPlayer (Vector2 touchPosition)
+		public bool checkDisPlayer (Vector2 touchPosition)
 		{
 				Player player = GameObject.Find ("main").GetComponent<Player> ();
 				Vector2 playerPos = player.getPlayerPos();
@@ -135,8 +138,10 @@ public class TestSphere : MonoBehaviour
 				
 				//範囲内であれば蹴れる
 			if (disObstacleAndPlayer < kickRange) {
+
 						return true;
 				}
 				return false;
 		}
+	
 }

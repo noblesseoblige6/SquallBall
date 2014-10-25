@@ -15,9 +15,17 @@ public class DeleteRedBalls : MonoBehaviour {
 	
 	}
 
-	// 同じ色のボールがぶつかったら点を加えて削除
 	void OnCollisionEnter2D(Collision2D collis){
-		if (collis.gameObject.CompareTag ("RedBall")) {
+
+		//別色のボールのKicked ボールがぶつかったら, Kicked フラグをたてる
+		if (collis.gameObject.CompareTag ("KickedBlueBall") || collis.gameObject.CompareTag ("KickedGreenBall")) 
+		{
+			fragKicked();
+		}
+
+		
+		// 同じ色の Kicked ボールがぶつかったら点を加えて削除
+		if (collis.gameObject.CompareTag ("KickedRedBall")) {
 		
 			//ボール大 同士
 			if(this.gameObject == RedBalls[0] && collis.gameObject == RedBalls[0])
@@ -34,5 +42,11 @@ public class DeleteRedBalls : MonoBehaviour {
 			Destroy (this.gameObject);
 			Destroy (collis.gameObject);
 		}
+	}
+
+	//Kicked のtagをたてる
+	void fragKicked()
+	{
+		this.gameObject.tag = "KickedRedBall";
 	}
 }

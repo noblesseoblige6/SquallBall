@@ -73,7 +73,8 @@ MonoBehaviour:
   speed: 2
   maxSpeed: 2
   direction: {x: 0, y: 0}
-  isKicked: 0
+  touchedPos: {x: 0, y: 0}
+  isTouched: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
