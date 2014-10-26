@@ -10,33 +10,29 @@ public class TestSphere : MonoBehaviour
 		public bool isTouched = false;
 
 
-		public bool isSlowdown = false;		//スロー状態か否か
-		public float nowTime = 0f;
-		public float SlowdownStartTime = 0f;	//スロー状態開始時刻
-		public float SlowdownEndTime = 0f;		//スロー状態終了時刻
 
-		public GameObject[] blueballs;
-		public GameObject[] redballs;
-		public GameObject[] greenballs;
 
 
 		private int rnd = Random.Range (0, 2);
-
+	GenBall genball;
 		// Use this for initialization
 		void Start ()
 		{
-				//ボールを飛ばす向きが、真下にならないよう調整
-				direction = new Vector2 (0, Random.Range (0, -2));
+		//ボールを飛ばす向きが、真下, 真横にならないよう調整
+		direction = new Vector2 (0, Random.Range (-0.1f, -1));
 
 				if (rnd == 0) {
-						direction.x = Random.Range (-2f, -0.1f);
+						direction.x = Random.Range (-1f, -0.1f);
 				} else {
-						direction.x = Random.Range (0.1f, 2f);
+						direction.x = Random.Range (0.1f, 1f);
 				}
 
-
 				rigidbody2D.velocity = speed * direction;
-				
+
+		//slowdown 状態のときは 初速度に 1/2
+		if (FindObjectOfType<GenBall> ().isSlowdown) {
+					rigidbody2D.velocity /= 2;
+				}
 		}
 
 
@@ -45,42 +41,11 @@ public class TestSphere : MonoBehaviour
 		{
 				checkTouch ();
 
-		redballs = GameObject.FindGameObjectsWithTag ("RedBall");
-		blueballs = GameObject.FindGameObjectsWithTag ("BlueBall");
-		greenballs = GameObject.FindGameObjectsWithTag ("GreenBall");
-
-
-				//Kamada < スロー状態が1秒続いたら, スロー解除
-
-		if (isSlowdown == true && FindObjectOfType<Clock> ().timer - SlowdownStartTime > 1) {
-
-						isSlowdown = false;
-						Time.timeScale = 1;
-						SlowdownEndTime = FindObjectOfType<Clock> ().timer;
-
-			foreach (var e in redballs) {
-				e.rigidbody2D.velocity *= 3;
-			}
-			foreach (var e in greenballs) {
-				e.rigidbody2D.velocity *= 3;
-			}	
-			foreach (var e in blueballs) {
-				e.rigidbody2D.velocity *= 3;
-			}
+	
 
 
 		}
 
-		}
-
-		//初期化
-		void Initialize ()
-		{
-				this.isSlowdown = false;
-				this.SlowdownEndTime = 0f;
-				this.SlowdownStartTime = 0f;
-				this.nowTime = 0;
-		}
 
 
 		//マウスクリックされたとき
@@ -99,26 +64,7 @@ public class TestSphere : MonoBehaviour
 		   ) {
 						gameObject.layer = 8;
 
-				//Kamada < クリックされたボール以外を遅くする処理 if (スロー状態でなく,前回のスロー状態から3秒以上たっていたら <kokogaumakuikanai)
-				if (isSlowdown == false && FindObjectOfType<Clock> ().timer - SlowdownEndTime > 3 && FindObjectOfType<Clock> ().timer - SlowdownStartTime> 1)
-				    {
-
-
-					isSlowdown = true;
-
-					//for test: Red, Green, Blue のボールを見つけて, 速度を遅くする
-
-					foreach (var e in redballs) {
-						e.rigidbody2D.velocity *= 1/2;
-					}
-					foreach (var e in greenballs) {
-						e.rigidbody2D.velocity *= 1/2;
-					}	
-					foreach (var e in blueballs) {
-						e.rigidbody2D.velocity *= 1/2;
-					}
-
-				}
+				genball.makeSlowDown();
 			}
 			
 			
@@ -211,5 +157,6 @@ public class TestSphere : MonoBehaviour
 				}
 
 		}
-	
+
+
 }
