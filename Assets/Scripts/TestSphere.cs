@@ -10,10 +10,16 @@ public class TestSphere : MonoBehaviour
 		public bool isTouched = false;
 
 
-		private bool isSlowdown = false;		//スロー状態か否か
-		private float SlowdownStartTime = 0;	//スロー状態開始時刻
-		private float SlowdownEndTime = 0;		//スロー状態終了時刻
-	
+		public bool isSlowdown = false;		//スロー状態か否か
+		public float nowTime = 0f;
+		public float SlowdownStartTime = 0f;	//スロー状態開始時刻
+		public float SlowdownEndTime = 0f;		//スロー状態終了時刻
+
+		public GameObject[] blueballs;
+		public GameObject[] redballs;
+		public GameObject[] greenballs;
+
+
 		private int rnd = Random.Range (0, 2);
 
 		// Use this for initialization
@@ -39,21 +45,41 @@ public class TestSphere : MonoBehaviour
 		{
 				checkTouch ();
 
+		redballs = GameObject.FindGameObjectsWithTag ("RedBall");
+		blueballs = GameObject.FindGameObjectsWithTag ("BlueBall");
+		greenballs = GameObject.FindGameObjectsWithTag ("GreenBall");
+
+
 				//Kamada < スロー状態が1秒続いたら, スロー解除
-				if (isSlowdown == true && FindObjectOfType<Clock> ().timer - SlowdownStartTime > 1) {
+
+		if (isSlowdown == true && FindObjectOfType<Clock> ().timer - SlowdownStartTime > 1) {
 
 						isSlowdown = false;
 						Time.timeScale = 1;
 						SlowdownEndTime = FindObjectOfType<Clock> ().timer;
-				}
+
+			foreach (var e in redballs) {
+				e.rigidbody2D.velocity *= 3;
+			}
+			foreach (var e in greenballs) {
+				e.rigidbody2D.velocity *= 3;
+			}	
+			foreach (var e in blueballs) {
+				e.rigidbody2D.velocity *= 3;
+			}
+
+
+		}
+
 		}
 
 		//初期化
 		void Initialize ()
 		{
 				this.isSlowdown = false;
-				this.SlowdownEndTime = 0;
-				this.SlowdownStartTime = 0;
+				this.SlowdownEndTime = 0f;
+				this.SlowdownStartTime = 0f;
+				this.nowTime = 0;
 		}
 
 
@@ -73,11 +99,24 @@ public class TestSphere : MonoBehaviour
 						gameObject.layer = 8;
 
 				//Kamada < クリックされたボール以外を遅くする処理 if (スロー状態でなく,前回のスロー状態から3秒以上たっていたら <kokogaumakuikanai)
-				if (isSlowdown == false && FindObjectOfType<Clock> ().timer - SlowdownEndTime > 3) {
-					
-					Time.timeScale = 0.33f;
+				if (isSlowdown == false && FindObjectOfType<Clock> ().timer - SlowdownEndTime > 3 && FindObjectOfType<Clock> ().timer - SlowdownStartTime> 1)
+				    {
+
+
 					isSlowdown = true;
-					SlowdownStartTime = FindObjectOfType<Clock> ().timer;
+
+					//for test: Red, Green, Blue のボールを見つけて, 速度を遅くする
+
+					foreach (var e in redballs) {
+						e.rigidbody2D.velocity *= 1/2;
+					}
+					foreach (var e in greenballs) {
+						e.rigidbody2D.velocity *= 1/2;
+					}	
+					foreach (var e in blueballs) {
+						e.rigidbody2D.velocity *= 1/2;
+					}
+
 				}
 			}
 			
