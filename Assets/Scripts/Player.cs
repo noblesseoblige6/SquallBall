@@ -9,9 +9,6 @@ public class Player : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		float x = Input.GetAxisRaw ("Horizontal");
-		//方向を求める
-		direction = new Vector2(x, 0).normalized;
 		rigidbody2D.velocity = direction * speed;
 	}
 	/*
@@ -35,5 +32,9 @@ public class Player : MonoBehaviour {
 	public Vector2 getPlayerPos(){
 
 		return transform.position;
+	}
+	//移動方向を与える
+	public void setDirection(float x){
+		direction = new Vector2(x, 0).normalized;
 	}
 }

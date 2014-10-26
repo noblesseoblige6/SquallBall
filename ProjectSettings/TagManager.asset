@@ -8,16 +8,8 @@ TagManager:
   - RedBall
   - KickedRedBall
   - GreenBall
-  - KickedGreenBall
-  - 
-  - 
-  - 
-  - KickedBall
-  - 
-  - 
-  - InvisibleWall
-  - 
-  - 
+  - RightButton
+  - LeftButton
   - InvisibleWall
   - 
   Builtin Layer 0: Default
