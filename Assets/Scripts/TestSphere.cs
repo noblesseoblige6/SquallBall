@@ -14,24 +14,27 @@ public class TestSphere : MonoBehaviour
 
 
 		private int rnd = Random.Range (0, 2);
-	GenBall genball;
+
 		// Use this for initialization
 		void Start ()
 		{
 		//ボールを飛ばす向きが、真下, 真横にならないよう調整
+		direction = new Vector2 (-1,-1);//(0, Random.Range (-0.1f, -1));
+/*
 		direction = new Vector2 (0, Random.Range (-0.1f, -1));
 
-				if (rnd == 0) {
+		/			if (rnd == 0) {
 						direction.x = Random.Range (-1f, -0.1f);
 				} else {
 						direction.x = Random.Range (0.1f, 1f);
 				}
-
+*/
 				rigidbody2D.velocity = speed * direction;
-
+//		Debug.Log (GameObject.Find("BallGenerator").GetComponent<GenBall>().returnIsSlowdown());
 		//slowdown 状態のときは 初速度に 1/2
-		if (FindObjectOfType<GenBall> ().isSlowdown) {
-					rigidbody2D.velocity /= 2;
+		if (GameObject.Find("BallGenerator").GetComponent<GenBall>().returnIsSlowdown())
+		    	 {
+					this.rigidbody2D.velocity /= 2;
 				}
 		}
 
@@ -63,8 +66,8 @@ public class TestSphere : MonoBehaviour
 						gameObject.CompareTag ("BlueBall")
 		   ) {
 						gameObject.layer = 8;
-
-				genball.makeSlowDown();
+				GameObject.Find("BallGenerator").GetComponent<GenBall>().makeSlowDown();
+				//
 			}
 			
 			

@@ -30,13 +30,16 @@ public class GenBall : MonoBehaviour {
 			Instantiate(obstacles[num], transform.position, obstacles[num].transform.rotation);
 			// interval の分だけ wait
 			yield return new WaitForSeconds(interval);
+			Debug.Log(this.isSlowdown);
+			makeaccelerate ();
+
 		}
 	}
 
 	void Update()
 	{
-		makeaccelerate ();
-		}
+
+	}
 
 	//初期化
 
@@ -50,9 +53,11 @@ public class GenBall : MonoBehaviour {
 
 	void update()
 	{
+
+
 		}
 	// isSlowDown を返す
-	bool returnIsSlowdown()
+	public bool returnIsSlowdown()
 	{
 		
 		return this.isSlowdown;
@@ -61,7 +66,7 @@ public class GenBall : MonoBehaviour {
 	//スロー状態開始から3秒たったらtrue を返す
 	bool checkSlowdownStartTime()
 	{
-		if (FindObjectOfType<Clock> ().timer - this.SlowdownStartTime == 3)
+		if (FindObjectOfType<Clock> ().timer - this.SlowdownStartTime > 3)
 			return true;
 		else 
 			return false;
@@ -71,7 +76,7 @@ public class GenBall : MonoBehaviour {
 	//スロー状態終了から3秒たったらtrue を返す
 	bool checkSlowdownEndTime()
 	{
-		if (FindObjectOfType<Clock> ().timer - this.SlowdownEndTime == 3)
+		if (FindObjectOfType<Clock> ().timer - this.SlowdownEndTime > 3)
 			return true;
 		else
 			return false;
@@ -96,7 +101,7 @@ public class GenBall : MonoBehaviour {
 	public void makeSlowDown()
 	{
 
-		if (checkSlowdownEndTime ()) {
+		if (!this.isSlowdown && checkSlowdownEndTime ()) {
 						redballs = GameObject.FindGameObjectsWithTag ("RedBall");
 						blueballs = GameObject.FindGameObjectsWithTag ("BlueBall");
 						greenballs = GameObject.FindGameObjectsWithTag ("GreenBall");
@@ -113,28 +118,31 @@ public class GenBall : MonoBehaviour {
 				
 						updateSlowdownStartTime ();
 				}
+		this.isSlowdown = true;
+
 	}
 
 	//ボールの速度を元に戻す
 	public void makeaccelerate()
 	{
-
-		if (checkSlowdownStartTime ()) {
+		if (this.isSlowdown && checkSlowdownStartTime ()) {
 						redballs = GameObject.FindGameObjectsWithTag ("RedBall");
 						blueballs = GameObject.FindGameObjectsWithTag ("BlueBall");
 						greenballs = GameObject.FindGameObjectsWithTag ("GreenBall");
 		
 						foreach (var e in redballs) {
-								e.rigidbody2D.velocity *= 2;
+								e.rigidbody2D.velocity *= 4;
 						}
 						foreach (var e in greenballs) {
-								e.rigidbody2D.velocity *= 2;
+								e.rigidbody2D.velocity *= 4;
 						}	
 						foreach (var e in blueballs) {
-								e.rigidbody2D.velocity *= 2;
+								e.rigidbody2D.velocity *= 4;
 						}
 
 						updateSlowdownEndTime ();
 				}
+		this.isSlowdown = false;
+
 	}
 }
