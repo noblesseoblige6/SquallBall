@@ -7,8 +7,8 @@ TagManager:
   - 
   - RedBall
   - GreenBall
-  - 
-  - 
+  - RightButton
+  - LeftButton
   - InvisibleWall
   - 
   Builtin Layer 0: Default
