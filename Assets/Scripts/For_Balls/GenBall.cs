@@ -7,7 +7,7 @@ public class GenBall : MonoBehaviour {
 	public GameObject[] obstacles = new GameObject[9];
 
 	// 増える間隔
-	public float interval = 3f;
+	public float interval = 3.0f;
 
 	IEnumerator Start(){
 

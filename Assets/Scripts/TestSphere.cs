@@ -59,6 +59,7 @@ public class TestSphere : MonoBehaviour
 		//マウスクリックされたとき
 		void OnMouseDown ()
 		{
+
 				//@akama 蹴られればレイヤーを変更
 				if (gameObject.CompareTag ("RedBall") ||
 						gameObject.CompareTag ("GreenBall") || 
@@ -68,10 +69,10 @@ public class TestSphere : MonoBehaviour
 				}
 
 				touchedPos = (Vector2)Camera.main.ScreenToWorldPoint (Input.mousePosition);
+		print ("Mouse down: "+touchedPos);
 				//プレイヤーとの距離をチェック
 				if (checkDisPlayer (touchedPos)) {
-
-						isTouched = true;
+						this.isTouched = true;
 						rigidbody2D.velocity *= 0;
 
 						//Kamada < クリックされたボール以外を遅くする処理 if (スロー状態でなく,前回のスロー状態から3秒以上たっていたら)
@@ -84,13 +85,19 @@ public class TestSphere : MonoBehaviour
 				}
 		}
 		//マウスボタンから離れたとき
-		void onMouseUp ()
+		void OnMouseUp ()
 		{
-				//オブジェクトをクリックしていればはじいた方向にオブジェクトを飛ばす
-				if (isTouched) {
-						float bias = 30.0f;
-						float length = ((Vector2)Input.mousePosition - touchedPos).magnitude / bias;
-						direction = ((Vector2)Input.mousePosition - touchedPos).normalized;
+		
+		Vector2 releasedPos = (Vector2)Camera.main.ScreenToWorldPoint (Input.mousePosition);
+
+		//オブジェクトをクリックしていればはじいた方向にオブジェクトを飛ばす
+				if (this.isTouched) {
+						float bias = 5.0f;
+						float length = (releasedPos - touchedPos).magnitude * bias;
+						if(length < 3.0f){
+							length = 3.0f;
+						}
+						Vector2 direction = (releasedPos - touchedPos).normalized;
 						rigidbody2D.velocity = length * direction;
 						isTouched = false;
 				}
@@ -125,7 +132,7 @@ public class TestSphere : MonoBehaviour
 						} 
 			//@akamaタッチ操作が終わったとき
 			else if (touch.phase == TouchPhase.Ended && isTouched) {
-								onMouseUp ();
+								OnMouseUp ();
 						}
 						
 				}
