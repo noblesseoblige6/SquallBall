@@ -30,11 +30,13 @@ public class TestSphere : MonoBehaviour
 				}
 */
 				rigidbody2D.velocity = speed * direction;
-//		Debug.Log (GameObject.Find("BallGenerator").GetComponent<GenBall>().returnIsSlowdown());
+		Debug.Log (FindObjectOfType<GenBall> ().returnIsSlowdown());
+
 		//slowdown 状態のときは 初速度に 1/2
-		if (GameObject.Find("BallGenerator").GetComponent<GenBall>().returnIsSlowdown())
+		//Debug.Log (GameObject.Find("BallGenerator").GetComponent<GenBall>().isSlowdown);
+		if (FindObjectOfType<GenBall> ().isSlowdown)
 		    	 {
-					this.rigidbody2D.velocity /= 2;
+					rigidbody2D.velocity /= 4;
 				}
 		}
 

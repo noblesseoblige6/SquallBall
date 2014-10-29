@@ -30,7 +30,7 @@ public class GenBall : MonoBehaviour {
 			Instantiate(obstacles[num], transform.position, obstacles[num].transform.rotation);
 			// interval の分だけ wait
 			yield return new WaitForSeconds(interval);
-			Debug.Log(this.isSlowdown);
+//			Debug.Log(this.isSlowdown);
 			makeaccelerate ();
 
 		}
@@ -107,13 +107,13 @@ public class GenBall : MonoBehaviour {
 						greenballs = GameObject.FindGameObjectsWithTag ("GreenBall");
 		
 						foreach (var e in redballs) {
-								e.rigidbody2D.velocity /= 2;
+								e.rigidbody2D.velocity /= 4;
 						}
 						foreach (var e in greenballs) {
-								e.rigidbody2D.velocity /= 2;
+								e.rigidbody2D.velocity /= 4;
 						}	
 						foreach (var e in blueballs) {
-								e.rigidbody2D.velocity /= 2;
+								e.rigidbody2D.velocity /= 4;
 						}
 				
 						updateSlowdownStartTime ();
@@ -131,13 +131,13 @@ public class GenBall : MonoBehaviour {
 						greenballs = GameObject.FindGameObjectsWithTag ("GreenBall");
 		
 						foreach (var e in redballs) {
-								e.rigidbody2D.velocity *= 4;
+								e.rigidbody2D.velocity *= 5;
 						}
 						foreach (var e in greenballs) {
-								e.rigidbody2D.velocity *= 4;
+								e.rigidbody2D.velocity *= 5;
 						}	
 						foreach (var e in blueballs) {
-								e.rigidbody2D.velocity *= 4;
+								e.rigidbody2D.velocity *= 5;
 						}
 
 						updateSlowdownEndTime ();
