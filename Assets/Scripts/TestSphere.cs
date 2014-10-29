@@ -8,8 +8,7 @@ public class TestSphere : MonoBehaviour
 		public Vector2 direction;
 		public Vector2 touchedPos;
 		public bool isTouched = false;
-
-
+		public bool slow = false;
 
 
 
@@ -30,11 +29,13 @@ public class TestSphere : MonoBehaviour
 				}
 */
 				rigidbody2D.velocity = speed * direction;
-		Debug.Log (FindObjectOfType<GenBall> ().returnIsSlowdown());
+//		Debug.Log (GameObject.Find("BallGenerator").GetComponent<GenBall>().returnIsSlowdown());
 
 		//slowdown 状態のときは 初速度に 1/2
 		//Debug.Log (GameObject.Find("BallGenerator").GetComponent<GenBall>().isSlowdown);
-		if (FindObjectOfType<GenBall> ().isSlowdown)
+		slow = GameObject.Find("BallGenerator").GetComponent<GenBall>().returnIsSlowdown();
+
+		if (slow)
 		    	 {
 					rigidbody2D.velocity /= 4;
 				}
@@ -46,7 +47,6 @@ public class TestSphere : MonoBehaviour
 		{
 				checkTouch ();
 
-	
 
 
 		}
@@ -164,4 +164,8 @@ public class TestSphere : MonoBehaviour
 		}
 
 
+	void slowmode()
+	{
+		slow = GameObject.Find("BallGenerator").GetComponent<GenBall>().returnIsSlowdown();
+	}
 }

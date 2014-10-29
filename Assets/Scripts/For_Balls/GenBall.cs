@@ -31,6 +31,7 @@ public class GenBall : MonoBehaviour {
 			// interval の分だけ wait
 			yield return new WaitForSeconds(interval);
 //			Debug.Log(this.isSlowdown);
+			Debug.Log (GameObject.Find("BallGenerator").GetComponent<GenBall>().returnIsSlowdown());
 			makeaccelerate ();
 
 		}
