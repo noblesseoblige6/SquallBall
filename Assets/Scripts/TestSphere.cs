@@ -8,17 +8,21 @@ public class TestSphere : MonoBehaviour
 		public Vector2 direction;
 		public Vector2 touchedPos;
 		public bool isTouched = false;
-		private bool isSlowdown = false;		//スロー状態か否か
-		private float SlowdownStartTime = 0;	//スロー状態開始時刻
-		private float SlowdownEndTime = 0;		//スロー状態終了時刻
-	
+
+
+
 		private int rnd = Random.Range (0, 2);
 
 		// Use this for initialization
 		void Start ()
 		{
-				//ボールを飛ばす向きが、真下にならないよう調整
-				direction = new Vector2 (0, Random.Range (0, -2));
+		//ボールを飛ばす向きが、真下, 真横にならないよう調整
+
+
+		//** Kamada < 速度の変化を確認するため, 初速度は一定の値にしてあります // **
+//		direction = new Vector2 (-1,-1);
+
+		direction = new Vector2 (0, Random.Range (-0.1f, -2));
 
 				if (rnd == 0) {
 						direction.x = Random.Range (-2f, -0.1f);
@@ -26,10 +30,13 @@ public class TestSphere : MonoBehaviour
 						direction.x = Random.Range (0.1f, 2f);
 				}
 
-
-				Initialize ();
 				rigidbody2D.velocity = speed * direction;
-				
+
+		//slowdown 状態のときは 初速度に 1/4
+		if (GameObject.Find("BallGenerator").GetComponent<GenBall>().returnIsSlowdown())
+		    	 {
+					rigidbody2D.velocity /= 4;
+				}
 		}
 
 
@@ -38,52 +45,38 @@ public class TestSphere : MonoBehaviour
 		{
 				checkTouch ();
 
-				//Kamada < スロー状態が1秒続いたら, スロー解除
-				if (isSlowdown == true && FindObjectOfType<Clock> ().timer - SlowdownStartTime > 1) {
 
-						isSlowdown = false;
-						Time.timeScale = 1;
-						SlowdownEndTime = FindObjectOfType<Clock> ().timer;
-				}
+
 		}
 
-		//初期化
-		void Initialize ()
-		{
-				this.isSlowdown = false;
-				this.SlowdownEndTime = 0;
-				this.SlowdownStartTime = 0;
-		}
 
 
 		//マウスクリックされたとき
 		void OnMouseDown ()
 		{
+		touchedPos = (Vector2)Camera.main.ScreenToWorldPoint (Input.mousePosition);
 
-				//@akama 蹴られればレイヤーを変更
+		//プレイヤーとの距離をチェック
+				if (checkDisPlayer (touchedPos)) {
+
+			//@akama 蹴られればレイヤーを変更
+
 				if (gameObject.CompareTag ("RedBall") ||
 						gameObject.CompareTag ("GreenBall") || 
 						gameObject.CompareTag ("BlueBall")
 		   ) {
 						gameObject.layer = 8;
-				}
 
-				touchedPos = (Vector2)Camera.main.ScreenToWorldPoint (Input.mousePosition);
-		print ("Mouse down: "+touchedPos);
-				//プレイヤーとの距離をチェック
-				if (checkDisPlayer (touchedPos)) {
-						this.isTouched = true;
-						rigidbody2D.velocity *= 0;
+				//**タッチされたら GenBall.cs 内の makeslowdown 関数を持ってきます**//
+				GameObject.Find("BallGenerator").GetComponent<GenBall>().makeSlowDown();
+			}
+			
+			
+		}		
 
-						//Kamada < クリックされたボール以外を遅くする処理 if (スロー状態でなく,前回のスロー状態から3秒以上たっていたら)
-						if (isSlowdown == false && FindObjectOfType<Clock> ().timer - SlowdownEndTime > 3) {
-				
-								Time.timeScale = Time.timeScale / 3;
-								isSlowdown = true;
-								SlowdownStartTime = FindObjectOfType<Clock> ().timer;
-						}
-				}
-		}
+
+			
+	}
 		//マウスボタンから離れたとき
 		void OnMouseUp ()
 		{
@@ -138,7 +131,7 @@ public class TestSphere : MonoBehaviour
 				}
 		}
 		//障害物とプレイヤーの距離を測る
-		bool checkDisPlayer (Vector2 touchPosition)
+		public bool checkDisPlayer (Vector2 touchPosition)
 		{
 				Player player = GameObject.Find ("main").GetComponent<Player> ();
 				Vector2 playerPos = player.getPlayerPos ();
@@ -148,6 +141,7 @@ public class TestSphere : MonoBehaviour
 				float kickRange = player.getKickRange ();
 				
 				//範囲内であれば蹴れる
+
 				if (disObstacleAndPlayer < kickRange) {
 						return true;
 				}
@@ -167,5 +161,6 @@ public class TestSphere : MonoBehaviour
 				}
 
 		}
-	
+
+
 }

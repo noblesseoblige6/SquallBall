@@ -4,8 +4,9 @@
 TagManager:
   tags:
   - BlueBall
-  - 
+  - KickedBlueBall
   - RedBall
+  - KickedRedBall
   - GreenBall
   - RightButton
   - LeftButton

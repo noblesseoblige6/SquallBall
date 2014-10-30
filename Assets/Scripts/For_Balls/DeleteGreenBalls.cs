@@ -5,9 +5,10 @@ public class DeleteGreenBalls : MonoBehaviour {
 	//大きさの判別用に使う予定
 	public GameObject[] GreenBalls = new GameObject[3];
 
-	// 同じ色のボールがぶつかったら点を加えて削除
+
 	void OnCollisionEnter2D(Collision2D collis){
-		if (collis.gameObject.CompareTag ("GreenBall") && collis.gameObject.layer == 8) {
+
+		if(collis.gameObject.CompareTag ("GreenBall") && collis.gameObject.layer == 8) {
 
 			//ボールの大きさに応じて点数に重みをつける予定
 			//ボール大 同士
@@ -27,4 +28,6 @@ public class DeleteGreenBalls : MonoBehaviour {
 
 		}
 	}
+
+
 }

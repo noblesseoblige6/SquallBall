@@ -12,6 +12,8 @@ public class Clock : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		timer += Time.deltaTime;
+
+
 	}
 
 	void reset(){
@@ -19,7 +21,10 @@ public class Clock : MonoBehaviour {
 		Time.timeScale = 1;
 
 		timer = 0.0f;
+
 	}
+
+
 	void OnGUI(){
 
 		Vector2 timerPos = new Vector2 (Screen.width - Screen.width/3.0f, 20.0f);

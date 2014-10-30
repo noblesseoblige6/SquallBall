@@ -25,4 +25,6 @@ public class DeleteRedBalls : MonoBehaviour {
 			Destroy (collis.gameObject);
 		}
 	}
+
+
 }

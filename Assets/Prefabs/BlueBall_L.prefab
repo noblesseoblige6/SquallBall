@@ -46,7 +46,7 @@ Rigidbody2D:
   m_FixedAngle: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
 --- !u!58 &5800000
 CircleCollider2D:
@@ -84,7 +84,15 @@ MonoBehaviour:
   speed: 2
   maxSpeed: 2
   direction: {x: 0, y: 0}
-  isKicked: 0
+  touchedPos: {x: 0, y: 0}
+  isTouched: 0
+  isSlowdown: 0
+  nowTime: 0
+  SlowdownStartTime: 0
+  SlowdownEndTime: 0
+  blueballs: []
+  redballs: []
+  greenballs: []
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
