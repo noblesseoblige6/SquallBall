@@ -3,9 +3,6 @@ using System;
 
 public class Clock : MonoBehaviour {
 	public float timer;
-//	private bool isSlowdown = false;		//スロー状態か否か
-//	private float SlowdownStartTime = 0;	//スロー状態開始時刻
-//	private float SlowdownEndTime = 0;		//スロー状態終了時刻
 
 	// Use this for initialization
 	void Start () {

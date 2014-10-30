@@ -30,11 +30,5 @@ public class DeleteBlueBalls : MonoBehaviour {
 		}
 	}
 
-	//Kicked のtagをたてる
-	void fragKicked()
-	{
-		//this.isKicked = true;
-		this.gameObject.tag = "KickedBlueBall";
-	}
 }
 
