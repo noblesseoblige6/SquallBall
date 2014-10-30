@@ -16,18 +16,7 @@ public class Clock : MonoBehaviour {
 	void Update () {
 		timer += Time.deltaTime;
 
-		//Kamada < スロー状態が1秒続いたら, スロー解除
-		/*
-		if (this.isSlowdown == true && FindObjectOfType<Clock> ().timer - this.SlowdownStartTime > 1) {
-			
-			this.isSlowdown = false;
-			Time.timeScale = 1;
-			this.SlowdownEndTime = FindObjectOfType<Clock> ().timer;
-			Debug.Log ("slow end: " + this.SlowdownEndTime);
 
-
-		}
-		*/
 	}
 
 	void reset(){
@@ -35,27 +24,9 @@ public class Clock : MonoBehaviour {
 		Time.timeScale = 1;
 
 		timer = 0.0f;
-	/*
-		this.isSlowdown = false;
-		this.SlowdownEndTime = 0;
-		this.SlowdownStartTime = 0;
-		*/
+
 	}
 
-	//Kamada < クリックされたボール以外を遅くする処理 if (スロー状態でなく,前回のスロー状態から3秒以上たっていたら)
-
-	/*
-	 * if((isSlowdown == false && FindObjectOfType<Clock> ().timer - this.SlowdownEndTime > 3))
-	{
-		
-		Time.timeScale = 0.33f;
-		float x = FindObjectOfType<Clock> ().timer - this.SlowdownEndTime;
-		
-		this.isSlowdown = true;
-		this.SlowdownStartTime = FindObjectOfType<Clock> ().timer;
-		Debug.Log ("slow start: " + this.SlowdownStartTime);
-	}
-	*/
 
 	void OnGUI(){
 

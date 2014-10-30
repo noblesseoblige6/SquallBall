@@ -8,7 +8,6 @@ public class TestSphere : MonoBehaviour
 		public Vector2 direction;
 		public Vector2 touchedPos;
 		public bool isTouched = false;
-		public bool slow = false;
 
 
 
@@ -18,24 +17,23 @@ public class TestSphere : MonoBehaviour
 		void Start ()
 		{
 		//ボールを飛ばす向きが、真下, 真横にならないよう調整
-		direction = new Vector2 (-1,-1);//(0, Random.Range (-0.1f, -1));
-/*
-		direction = new Vector2 (0, Random.Range (-0.1f, -1));
 
-		/			if (rnd == 0) {
-						direction.x = Random.Range (-1f, -0.1f);
+
+		//** Kamada < 速度の変化を確認するため, 初速度は一定の値にしてあります // **
+//		direction = new Vector2 (-1,-1);
+
+		direction = new Vector2 (0, Random.Range (-0.1f, -2));
+
+				if (rnd == 0) {
+						direction.x = Random.Range (-2f, -0.1f);
 				} else {
-						direction.x = Random.Range (0.1f, 1f);
+						direction.x = Random.Range (0.1f, 2f);
 				}
-*/
+
 				rigidbody2D.velocity = speed * direction;
-//		Debug.Log (GameObject.Find("BallGenerator").GetComponent<GenBall>().returnIsSlowdown());
 
-		//slowdown 状態のときは 初速度に 1/2
-		//Debug.Log (GameObject.Find("BallGenerator").GetComponent<GenBall>().isSlowdown);
-		slow = GameObject.Find("BallGenerator").GetComponent<GenBall>().returnIsSlowdown();
-
-		if (slow)
+		//slowdown 状態のときは 初速度に 1/4
+		if (GameObject.Find("BallGenerator").GetComponent<GenBall>().returnIsSlowdown())
 		    	 {
 					rigidbody2D.velocity /= 4;
 				}
@@ -68,8 +66,9 @@ public class TestSphere : MonoBehaviour
 						gameObject.CompareTag ("BlueBall")
 		   ) {
 						gameObject.layer = 8;
+
+				//**タッチされたら GenBall.cs 内の makeslowdown 関数を持ってきます**//
 				GameObject.Find("BallGenerator").GetComponent<GenBall>().makeSlowDown();
-				//
 			}
 			
 			
@@ -164,8 +163,4 @@ public class TestSphere : MonoBehaviour
 		}
 
 
-	void slowmode()
-	{
-		slow = GameObject.Find("BallGenerator").GetComponent<GenBall>().returnIsSlowdown();
-	}
 }
