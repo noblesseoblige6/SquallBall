@@ -35,7 +35,7 @@ public class TestSphere : MonoBehaviour
 		//slowdown 状態のときは 初速度に 1/4
 		if (GameObject.Find("BallGenerator").GetComponent<GenBall>().returnIsSlowdown())
 		    	 {
-					rigidbody2D.velocity /= 4;
+					rigidbody2D.velocity /= 16;
 				}
 		}
 
