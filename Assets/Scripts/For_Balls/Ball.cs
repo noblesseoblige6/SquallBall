@@ -14,9 +14,9 @@ public class Ball : MonoBehaviour {
 	protected int strength;					//ボール強度
 	protected int chain;						//ボールを消した回数
 
-	protected GameObject[] RedBalls = new GameObject[3];
-	protected GameObject[] GreenBalls = new GameObject[3];
-	protected GameObject[] BlueBalls = new GameObject[3];
+	public GameObject[] RedBalls = new GameObject[3];
+	public GameObject[] GreenBalls = new GameObject[3];
+	public GameObject[] BlueBalls = new GameObject[3];
 
 
 	// Use this for initialization

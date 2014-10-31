@@ -453,6 +453,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 909109391}
   - 114: {fileID: 909109390}
+  - 114: {fileID: 909109393}
+  - 50: {fileID: 909109392}
   m_Layer: 0
   m_Name: BallGenerator
   m_TagString: Untagged
@@ -501,6 +503,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!50 &909109392
+Rigidbody2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 909109389}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 0
+  m_FixedAngle: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+--- !u!114 &909109393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 909109389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d417fc4a4b05a49dca0b1e10c924e8f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  maxSpeed: 3
+  minSpeed: .100000001
+  direction: {x: -.517485082, y: -2.24713326}
+  touchedPos: {x: 0, y: 0}
+  isTouched: 0
+  minVelo: 1
+  RedBalls:
+  - {fileID: 100000, guid: 8ad24e0fa368340bd8aa43afeb4d0013, type: 2}
+  - {fileID: 100000, guid: 9bbae4d58bc0e48ec8e0f87dbc12542c, type: 2}
+  - {fileID: 100000, guid: 52d57393f75d640f494d3fcd5836d8cb, type: 2}
+  GreenBalls:
+  - {fileID: 100000, guid: 11a841eb77e7c491fb4a09c656c09471, type: 2}
+  - {fileID: 100000, guid: 7c44af7d39e734dc9beaba4af1d29a79, type: 2}
+  - {fileID: 100000, guid: 408d9e5deb7e243e3a230a8ddbe30218, type: 2}
+  BlueBalls:
+  - {fileID: 100000, guid: 0ef0be98473d8435fbb63f703ec92293, type: 2}
+  - {fileID: 100000, guid: f7827941154f543189d4012e5a3752a9, type: 2}
+  - {fileID: 100000, guid: b2cc5f207c38340a98326cd07fce0e84, type: 2}
 --- !u!1 &1047766826
 GameObject:
   m_ObjectHideFlags: 0
