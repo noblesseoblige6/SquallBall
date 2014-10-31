@@ -86,13 +86,6 @@ MonoBehaviour:
   direction: {x: 0, y: 0}
   touchedPos: {x: 0, y: 0}
   isTouched: 0
-  isSlowdown: 0
-  nowTime: 0
-  SlowdownStartTime: 0
-  SlowdownEndTime: 0
-  blueballs: []
-  redballs: []
-  greenballs: []
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
