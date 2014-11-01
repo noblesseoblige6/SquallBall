@@ -29,13 +29,13 @@ public class BlueBall : Ball {
 		else if (collis.gameObject.CompareTag ("GreenBall") && collis.gameObject.layer == 8) {
 			
 			//ボール大 同士
-			if(this.gameObject == BlueBalls[0] && collis.gameObject == GreenBalls[0])
+			if(checkThisBall(0) && checkCollisBall(collis, 3))
 				addScore(20);
 			//ボール中 同士
-			else if(this.gameObject == BlueBalls[1] && collis.gameObject == GreenBalls[1])
+			else if(checkThisBall(1) && checkCollisBall(collis, 4))
 				addScore (30);
 			//ボール小 同士
-			else if(this.gameObject == BlueBalls[2] && collis.gameObject == GreenBalls[2])
+			else if(checkThisBall(2) && checkCollisBall(collis, 5))
 				addScore (50);
 			else
 				addScore(10);

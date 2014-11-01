@@ -252,5 +252,26 @@ public class Ball : MonoBehaviour {
 		FindObjectOfType<Score>().addScore (score);
 
 	}
+
+	//自分のボールの種類をチェック
+	public bool checkThisBall(int kind)
+	{
+		if (this.gameObject == FindObjectOfType<GenBall> ().GetComponent<GenBall> ().obstacles [kind]) 
+			return true;
 	
+
+		else
+			return false;
+	}
+
+	//相手のボールの種類チェック
+	public bool checkCollisBall(Collision2D collis, int kind)
+	{
+		if (collis.gameObject == FindObjectOfType<GenBall> ().GetComponent<GenBall> ().obstacles [kind]) 
+			return true;
+		
+
+		else 
+			return false;
+	}
 }

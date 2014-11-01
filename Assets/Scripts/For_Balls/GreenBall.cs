@@ -22,16 +22,7 @@ public class GreenBall : Ball {
 		chain = 0;
 		
 	}
-	
-	//RedBall 初期化 GenBall.cs で複製しているため,こちらの方が好ましいか
-	/*
-	public void Initialize()
-	{
-		firstVelosity ();
-		strength = Random.Range (2, 10);
-		chain = 0;
-	}
-*/
+
 	
 	// Red Ball がぶつかったら点を加えて削除
 	void OnCollisionEnter2D(Collision2D collis){
@@ -49,13 +40,13 @@ public class GreenBall : Ball {
 		else if (collis.gameObject.CompareTag ("RedBall") && collis.gameObject.layer == 8) {
 			
 			//ボール大 同士
-			if(this.gameObject == GreenBalls[0] && collis.gameObject == RedBalls[0])
+			if(checkThisBall(3) && checkCollisBall(collis, 6))
 				addScore(20);
 			//ボール中 同士
-			else if(this.gameObject == GreenBalls[1] && collis.gameObject == RedBalls[1])
+			else if(checkThisBall(4) && checkCollisBall(collis, 7))
 				addScore (30);
 			//ボール小 同士
-			else if(this.gameObject == GreenBalls[2] && collis.gameObject == RedBalls[2])
+			else if(checkThisBall(5) && checkCollisBall(collis, 8))
 				addScore (50);
 			else
 				addScore(10);
