@@ -5,7 +5,29 @@ public class RedBall : Ball {
 
 	// Use this for initialization
 	void Start () {
+		//ボールを飛ばす向きが、真下, 真横にならないよう調整
+		
+		
+		//** Kamada < 速度の変化を確認するため, 初速度は一定の値にしてあります // **
+		//		direction = new Vector2 (-1,-1);
+		
+		direction = new Vector2 (0, Random.Range (-minSpeed, -maxSpeed));
+		int rnd = Random.Range (0, 1);
+		if (rnd == 0) {
+			direction.x = Random.Range (-maxSpeed, -minSpeed);
+		} else {
+			direction.x = Random.Range (minSpeed, maxSpeed);
+		}
+		
+		this.rigidbody2D.velocity = speed * direction;
+		
+		//slowdown 状態のときは 初速度に 1/4
+		if (GameObject.Find("BallGenerator").GetComponent<GenBall>().returnIsSlowdown())
+		{
+			this.rigidbody2D.velocity /= 16;
+		}
 		Initialize ();
+
 	}
 
 	
@@ -14,14 +36,6 @@ public class RedBall : Ball {
 		checkTouch ();
 	}
 
-	//RedBall コンストラクタ
-	public RedBall()
-	{
-		firstVelosity ();
-		strength = 1;
-		chain = 0;
-	
-	}
 
 
 
@@ -38,7 +52,7 @@ public class RedBall : Ball {
 			}	
 		}
 
-		else if (collis.gameObject.CompareTag ("BlueBall") && collis.gameObject.layer == 8) {
+		if (collis.gameObject.CompareTag ("BlueBall") && (collis.gameObject.layer == 8|| this.gameObject.layer == 8)) {
 			
 			//ボール大 同士
 			if(checkThisBall(6) && checkCollisBall(collis, 0))

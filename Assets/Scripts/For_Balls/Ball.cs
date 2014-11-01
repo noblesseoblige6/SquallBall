@@ -4,19 +4,15 @@ using System.Collections;
 public class Ball : MonoBehaviour {
 
 	public float speed = 3.0f;
-	public float maxSpeed = 3.0f;
+	public float maxSpeed = 1.0f;
 	public float minSpeed = 0.1f;
 	public Vector2 direction;
 	public Vector2 touchedPos;
 	public bool isTouched = false;
 	public float minVelo = 1.0f;
 
-	protected int strength;					//ボール強度
-	protected int chain;						//ボールを消した回数
-
-	public GameObject[] RedBalls = new GameObject[3];
-	public GameObject[] GreenBalls = new GameObject[3];
-	public GameObject[] BlueBalls = new GameObject[3];
+	public int strength;					//ボール強度
+	public int chain;						//ボールを消した回数
 
 
 	// Use this for initialization
@@ -33,7 +29,7 @@ public class Ball : MonoBehaviour {
 	//	コンストラクタ 1
 	public Ball()
 	{
-		firstVelosity();
+//		firstVelosity();
 		strength = (int)Random.Range (2, 10);
 		chain = 0;
 	}
@@ -41,7 +37,6 @@ public class Ball : MonoBehaviour {
 	//	コンストラクタ 2(強度を初期化する場合)
 	public Ball(int firstSTR)
 	{
-		firstVelosity ();
 		strength = firstSTR;
 		chain = 0;
 
@@ -50,37 +45,10 @@ public class Ball : MonoBehaviour {
 
 	public void Initialize ()
 	{
-		firstVelosity ();
 		strength = Random.Range (2, 10);
 		chain = 0;
 	}
 
-	//	初速度の設定
-	public void firstVelosity()
-	{
-		//ボールを飛ばす向きが、真下, 真横にならないよう調整
-		
-		
-		//** Kamada < 速度の変化を確認するため, 初速度は一定の値にしてあります // **
-		//		direction = new Vector2 (-1,-1);
-		
-		direction = new Vector2 (0, Random.Range (-minSpeed, -maxSpeed));
-		int rnd = Random.Range (0, 1);
-		if (rnd == 0) {
-			direction.x = Random.Range (-maxSpeed, -minSpeed);
-		} else {
-			direction.x = Random.Range (minSpeed, maxSpeed);
-		}
-		
-		rigidbody2D.velocity = speed * direction;
-		
-		//slowdown 状態のときは 初速度に 1/4
-		if (GameObject.Find("BallGenerator").GetComponent<GenBall>().returnIsSlowdown())
-		{
-			rigidbody2D.velocity /= 16;
-		}
-
-	}
 
 	//マウスクリックされたとき
 	public void OnMouseDown ()
