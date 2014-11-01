@@ -145,22 +145,7 @@ public class Ball : MonoBehaviour {
 		}
 		return false;
 	}
-	//他のオブジェクトと衝突したとき
-	/*
-	public void OnCollisionEnter2D (Collision2D other)
-	{
-		//自分が蹴られている場合かつ相手が蹴られていない		
-		if (this.gameObject.layer == 8 && other.gameObject.layer == 0) {
-			//相手を蹴られていることにする			
-			if (other.gameObject.CompareTag ("RedBall") ||
-			    other.gameObject.CompareTag ("GreenBall") ||
-			    other.gameObject.CompareTag ("BlueBall")) {
-				other.gameObject.layer = 8;
-			}	
-		}
-		
-	}
-*/
+
 	// 画面外に出たら削除
 	public void OnBecameInvisible ()
 	{
@@ -174,16 +159,25 @@ public class Ball : MonoBehaviour {
 		float v;
 		velo = this.rigidbody2D.velocity;
 		v = velo.x * velo.x + velo.y * velo.y;
-		if (v * 16 < minVelo)		//スロー状態も考慮
+		if (v * 100 < minVelo)		//スロー状態も考慮
 			return true;
 		else
 			return false;
 	}
-	
-	//	削除チェック
-	public void 	checkDestroy()
+
+	//強度が0以下になったら削除フラグ
+	public bool checkStrength()
 	{
-		if (checkVelosity ()) 
+		if (this.strength <= 0)
+						return true;
+				else
+						return false;
+	}
+
+	//	削除チェック
+	public void checkDestroy()
+	{
+		if (checkVelosity () || checkStrength()) 
 		{
 			Destroy (this.gameObject);
 			

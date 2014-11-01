@@ -21,7 +21,7 @@ public class RedBall : Ball {
 		
 		this.rigidbody2D.velocity = speed * direction;
 		
-		//slowdown 状態のときは 初速度に 1/4
+		//slowdown 状態のときは 初速度に 1/16
 		if (GameObject.Find("BallGenerator").GetComponent<GenBall>().returnIsSlowdown())
 		{
 			this.rigidbody2D.velocity /= 16;
@@ -34,6 +34,7 @@ public class RedBall : Ball {
 	// Update is called once per frame
 	void Update () {
 		checkTouch ();
+		checkDestroy ();
 	}
 
 
@@ -51,7 +52,7 @@ public class RedBall : Ball {
 				collis.gameObject.layer = 8;
 			}	
 		}
-
+		//相手が Blue Ball で, どちらかが レイヤー8 にいたら 消える
 		if (collis.gameObject.CompareTag ("BlueBall") && (collis.gameObject.layer == 8|| this.gameObject.layer == 8)) {
 			
 			//ボール大 同士
