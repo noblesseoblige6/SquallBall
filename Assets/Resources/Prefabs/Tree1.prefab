@@ -12,7 +12,7 @@ GameObject:
   - 95: {fileID: 9500000}
   - 114: {fileID: 11400000}
   - 61: {fileID: 6100000}
-  - 50: {fileID: 5000000}
+  - 60: {fileID: 6000000}
   m_Layer: 12
   m_Name: Tree1
   m_TagString: GreenEffect
@@ -32,28 +32,46 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!50 &5000000
-Rigidbody2D:
+--- !u!60 &6000000
+PolygonCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Mass: 10000
-  m_LinearDrag: 0
-  m_AngularDrag: .0500000007
-  m_GravityScale: 0
-  m_FixedAngle: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Poly:
+    m_Paths:
+    - - {x: .451348156, y: .189319476}
+      - {x: .451348156, y: .470679402}
+      - {x: .409144163, y: .695767343}
+      - {x: .395076156, y: .737971306}
+      - {x: .352872163, y: .780175328}
+      - {x: .338804185, y: .780175328}
+      - {x: .268464178, y: .752039313}
+      - {x: .31066817, y: .48474741}
+      - {x: .31066817, y: .259659469}
+      - {x: .0715122446, y: .189319476}
+      - {x: -.252051681, y: .020503521}
+      - {x: -.322391659, y: .287795454}
+      - {x: -.420867622, y: .358135432}
+      - {x: -.449003607, y: .231523469}
+      - {x: -.449003607, y: .0345715173}
+      - {x: -.266119659, y: -.176448435}
+      - {x: -.322391659, y: -.500012338}
+      - {x: -.280187666, y: -.767304301}
+      - {x: -.209847689, y: -.767304301}
+      - {x: -.125439703, y: -.711032271}
+      - {x: -.125439703, y: -.0920404494}
+      - {x: .0152402576, y: .020503521}
 --- !u!61 &6100000
 BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Size: {x: 1.5, y: 3}
