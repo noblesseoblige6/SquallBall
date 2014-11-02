@@ -53,6 +53,7 @@ public class Ball : MonoBehaviour {
 	//マウスクリックされたとき
 	public void OnMouseDown ()
 	{
+		Debug.Log ("MouseDown");
 		touchedPos = (Vector2)Camera.main.ScreenToWorldPoint (Input.mousePosition);
 		
 		//プレイヤーとの距離をチェック
@@ -68,6 +69,7 @@ public class Ball : MonoBehaviour {
 				
 				//**タッチされたら GenBall.cs 内の makeslowdown 関数を持ってきます**//
 				GameObject.Find("BallGenerator").GetComponent<GenBall>().makeSlowDown();
+				this.isTouched = true;
 			}
 			
 			
@@ -78,7 +80,7 @@ public class Ball : MonoBehaviour {
 	//マウスボタンから離れたとき
 	public void OnMouseUp ()
 	{
-		
+		Debug.Log ("OnMouseUp");
 		Vector2 releasedPos = (Vector2)Camera.main.ScreenToWorldPoint (Input.mousePosition);
 		
 		//オブジェクトをクリックしていればはじいた方向にオブジェクトを飛ばす
