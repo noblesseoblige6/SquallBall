@@ -66,7 +66,9 @@ public class GreenBall : Ball {
 				addScore (50);
 			else
 				addScore(10);
-			
+
+			//Greenボールのエフェクト発動
+
 			Destroy (this.gameObject);
 			//Destroy (collis.gameObject);
 		}
