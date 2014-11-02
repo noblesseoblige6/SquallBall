@@ -40,32 +40,58 @@ public class RedBall : Ball {
 
 
 
-	// Blue Ball がぶつかったら点を加えて削除
+	//各色の Ball がぶつかったときの処理
 	void OnCollisionEnter2D(Collision2D collis){
-
-
-		//相手が Blue Ball で, レイヤー8 にいたら 自分の強度を弱める 点数は後で考える
-		if ((collis.gameObject.layer == 8) && collis.gameObject.CompareTag ("BlueBall")) 
+		
+		
+		//相手が Blue Ball 
+		if (collis.gameObject.CompareTag ("BlueBall")) 
 		{
-
-			//自分もレイヤー8にいたら無条件で消える
-			if(this.gameObject.layer == 8)
+			
+			//相手も自分もレイヤー8にいたら無条件で消える
+			if(this.gameObject.layer == 8 && collis.gameObject.layer == 8)
 			{
 				Destroy (this.gameObject);
-				collis.gameObject.GetComponent<BlueBall>().updateChain();
-
+				Destroy (collis.gameObject);
 			}
-
 			
-			else
+			//相手だけレイヤー8にいたら自分の強度を下げる
+			else if(this.gameObject.layer != 8 && collis.gameObject.layer == 8)
 			{
 				this.updateStrength(collis.gameObject.GetComponent<BlueBall>().returnStrength());
-
-				if(this.returnStrength() <= 0)
-					collis.gameObject.GetComponent<BlueBall>().updateChain();
+			}
+			
+			//自分だけレイヤー8にいたら 連鎖数を-1
+			else if(this.gameObject.layer == 8 && collis.gameObject.layer != 8)
+			{
+				this.minusChain();
+				
+			}
+		}
+		
+		
+		//相手が Red Ball 
+		if (collis.gameObject.CompareTag ("RedBall")) 
+		{
+			//相手も自分もレイヤー8にいたら無条件で消える
+			if(this.gameObject.layer == 8 && collis.gameObject.layer == 8)
+			{
+				Destroy (this.gameObject);
+				Destroy (collis.gameObject);
+			}
+			
+			
+			
+			//自分だけレイヤー8にいたら 連鎖数を+1 し, 相手を消す
+			else if(this.gameObject.layer == 8 && collis.gameObject.layer != 8)
+			{
+				this.updateChain();
+				Destroy (collis.gameObject);
 			}
 			
 		}
-
+		
+		
+		
 	}
 }
