@@ -236,4 +236,4 @@ public class Ball : MonoBehaviour {
 		else 
 			return false;
 	}
-}
+	}
