@@ -67,7 +67,14 @@ public class GreenBall : Ball {
 			else
 				addScore(10);
 
-			//Greenボールのエフェクト発動
+			//@debug Greenボールのエフェクト発動
+			GameObject TreePrefab = (GameObject)Resources.Load ("Prefabs/Tree1");
+
+			Vector2 collidedVec = collis.gameObject.transform.forward;
+			float theta = Mathf.Acos(Vector2.Dot(collidedVec, Vector2(0,1)));
+			Transform effectTransform = this.gameObject.transform;
+			// プレハブからインスタンスを生成
+			Instantiate (TreePrefab, effectTransform.position, Quaternion.AngleAxis(theta, collidedVec));
 
 			Destroy (this.gameObject);
 			//Destroy (collis.gameObject);
