@@ -31,14 +31,14 @@ public class Ball : MonoBehaviour {
 	{
 //		firstVelosity();
 		strength = (int)Random.Range (2, 10);
-		chain = 3;
+		chain = 0;
 	}
 
 	//	コンストラクタ 2(強度を初期化する場合)
 	public Ball(int firstSTR)
 	{
 		strength = firstSTR;
-		chain = 3;
+		chain = 0;
 
 	}
 
@@ -46,7 +46,7 @@ public class Ball : MonoBehaviour {
 	public void Initialize ()
 	{
 		strength = Random.Range (2, 10);
-		chain = 3;
+		chain = 0;
 	}
 
 
