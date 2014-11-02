@@ -174,10 +174,19 @@ public class Ball : MonoBehaviour {
 						return false;
 	}
 
+	//連鎖数が 負になったら削除フラグ
+	public bool checkChain()
+	{
+		if (this.chain < 0)
+						return true;
+				else
+						return false;
+	}
+
 	//	削除チェック
 	public void checkDestroy()
 	{
-		if (checkStrength()) 
+		if (checkStrength() || checkChain()) 
 		{
 			Destroy (this.gameObject);
 			
@@ -208,6 +217,11 @@ public class Ball : MonoBehaviour {
 		this.chain++;
 	}
 
+	//連鎖数の更新(-1)
+	public void minusChain(){
+		this.chain--;
+	}
+	
 	//score 加算
 	public void addScore(int score)
 	{
