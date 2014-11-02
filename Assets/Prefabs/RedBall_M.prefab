@@ -9,12 +9,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 212: {fileID: 21200000}
-  - 114: {fileID: 11400000}
   - 61: {fileID: 6100000}
   - 50: {fileID: 5000000}
-  - 114: {fileID: 11400002}
-  - 114: {fileID: 11400004}
   - 58: {fileID: 5800000}
+  - 114: {fileID: 11400000}
   m_Layer: 0
   m_Name: RedBall_M
   m_TagString: RedBall
@@ -79,47 +77,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20488ca1166cb441abf0c0151d1c9b1d, type: 3}
+  m_Script: {fileID: 11500000, guid: fa5b2162ff52f4b378afca8861f42610, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11400002
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04745ba5c9660fe4387fbde0a67fc7c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
-  maxSpeed: 2
-  direction: {x: 0, y: 0}
+  speed: 3
+  maxSpeed: 1
+  minSpeed: .100000001
+  direction: {x: -.562806904, y: -1.85901058}
   touchedPos: {x: 0, y: 0}
   isTouched: 0
-  isSlowdown: 0
-  nowTime: 0
-  SlowdownStartTime: 0
-  SlowdownEndTime: 0
-  blueballs: []
-  redballs: []
-  greenballs: []
---- !u!114 &11400004
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc35370466e93461ab0a41c0e17470fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  minVelo: 1
   RedBalls:
-  - {fileID: 100000, guid: 8ad24e0fa368340bd8aa43afeb4d0013, type: 2}
-  - {fileID: 100000}
-  - {fileID: 100000, guid: 52d57393f75d640f494d3fcd5836d8cb, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  GreenBalls:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  BlueBalls:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

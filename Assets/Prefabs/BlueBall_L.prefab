@@ -12,8 +12,6 @@ GameObject:
   - 58: {fileID: 5800000}
   - 50: {fileID: 5000000}
   - 114: {fileID: 11400000}
-  - 114: {fileID: 11400002}
-  - 114: {fileID: 11400004}
   m_Layer: 0
   m_Name: BlueBall_L
   m_TagString: BlueBall
@@ -67,40 +65,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20488ca1166cb441abf0c0151d1c9b1d, type: 3}
+  m_Script: {fileID: 11500000, guid: 13dc25524618c491c8e150c100af8dc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11400002
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04745ba5c9660fe4387fbde0a67fc7c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
-  maxSpeed: 2
-  direction: {x: 0, y: 0}
+  speed: 3
+  maxSpeed: 1
+  minSpeed: .100000001
+  direction: {x: -1.99480844, y: -.8049348}
   touchedPos: {x: 0, y: 0}
   isTouched: 0
---- !u!114 &11400004
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06bd6472f405444758bba1dffbeac8a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  minVelo: 1
+  RedBalls:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  GreenBalls:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   BlueBalls:
-  - {fileID: 100000}
-  - {fileID: 100000, guid: f7827941154f543189d4012e5a3752a9, type: 2}
-  - {fileID: 100000, guid: b2cc5f207c38340a98326cd07fce0e84, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
