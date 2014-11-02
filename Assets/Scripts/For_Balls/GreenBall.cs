@@ -38,29 +38,7 @@ public class GreenBall : Ball
 
 		}
 
-			public void genEffect (Collision2D collis)
-		{
-				GameObject TreePrefab;
-				int chain = collis.gameObject.GetComponent<RedBall> ().returnChain ();
-
-				//@akama GreenボールのエフェクトのPrehabを取得
-				if (chain <= 2) {
-						TreePrefab = (GameObject)Resources.Load ("Prefabs/Tree1");
-				} else if (chain <= 4) {
-						TreePrefab = (GameObject)Resources.Load ("Prefabs/Tree1");
-				} else {
-						TreePrefab = (GameObject)Resources.Load ("Prefabs/Tree1");
-				}
-				//当たったボールの方向から木の角度を求める
-				Vector3 collidedVec = collis.gameObject.rigidbody2D.velocity.normalized;
-				float dot = Vector3.Dot (collidedVec, new Vector3 (0, 1, 0));
-				float angle = Mathf.Rad2Deg * Mathf.Acos (dot);
 		
-				Transform effectTransform = this.gameObject.transform;
-				// プレハブからインスタンスを生成
-				Instantiate (TreePrefab, effectTransform.position, Quaternion.AngleAxis (angle, new Vector3 (0, 0, 1)));
-
-		}
 	//各色の Ball がぶつかったときの処理
 	void OnCollisionEnter2D(Collision2D collis){
 		
@@ -80,6 +58,10 @@ public class GreenBall : Ball
 			else if(this.gameObject.layer != 8 && collis.gameObject.layer == 8)
 			{
 				this.updateStrength(collis.gameObject.GetComponent<RedBall>().returnStrength());
+				//強度が一定以下ならエフェクトを出して消える
+				if(this.checkDestroy()){
+					this.genEffect(collis);
+				}
 			}
 			
 			//自分だけレイヤー8にいたら 連鎖数を-1
@@ -113,6 +95,30 @@ public class GreenBall : Ball
 		}
 		
 		
+		
+	}
+
+	public void genEffect (Collision2D collis)
+	{
+		GameObject effect;
+		int chain = collis.gameObject.GetComponent<RedBall> ().returnChain ();
+		
+		//@akama GreenボールのエフェクトのPrehabを取得
+		if (chain <= 2) {
+			effect = (GameObject)Resources.Load ("Prefabs/Tree1");
+		} else if (chain <= 4) {
+			effect = (GameObject)Resources.Load ("Prefabs/Tree1");
+		} else {
+			effect = (GameObject)Resources.Load ("Prefabs/Tree1");
+		}
+		//当たったボールの方向から木の角度を求める
+		Vector3 collidedVec = collis.gameObject.rigidbody2D.velocity.normalized;
+		float dot = Vector3.Dot (collidedVec, new Vector3 (0, 1, 0));
+		float angle = Mathf.Rad2Deg * Mathf.Acos (dot);
+		
+		Transform effectTransform = this.gameObject.transform;
+		// プレハブからインスタンスを生成
+		Instantiate (effect, effectTransform.position, Quaternion.AngleAxis (angle, new Vector3 (0, 0, 1)));
 		
 	}
 }

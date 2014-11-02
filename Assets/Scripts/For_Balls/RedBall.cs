@@ -59,6 +59,10 @@ public class RedBall : Ball {
 			else if(this.gameObject.layer != 8 && collis.gameObject.layer == 8)
 			{
 				this.updateStrength(collis.gameObject.GetComponent<BlueBall>().returnStrength());
+				//強度が一定以下ならエフェクトを出して消える
+				if(this.checkDestroy()){
+					this.genEffect(collis);
+				}
 			}
 			
 			//自分だけレイヤー8にいたら 連鎖数を-1
@@ -92,6 +96,26 @@ public class RedBall : Ball {
 		}
 		
 		
+		
+	}
+	public void genEffect (Collision2D collis)
+	{
+		GameObject effect;
+		int chain = collis.gameObject.GetComponent<BlueBall> ().returnChain ();
+		
+		//@akama GreenボールのエフェクトのPrehabを取得
+		if (chain <= 2) {
+			effect = (GameObject)Resources.Load ("Prefabs/Fire3");
+		} else if (chain <= 4) {
+			effect = (GameObject)Resources.Load ("Prefabs/Fire3");
+			effect.GetComponent<CircleCollider2D>().radius = 3.0f;
+		} else {
+			effect = (GameObject)Resources.Load ("Prefabs/Fire3");
+			effect.GetComponent<CircleCollider2D>().radius = 5.0f;
+		}
+		Transform effectTransform = this.gameObject.transform;
+		// プレハブからインスタンスを生成
+		Instantiate (effect, effectTransform.position, Quaternion.identity);
 		
 	}
 }
