@@ -21,10 +21,10 @@ public class BlueBall : Ball {
 		
 		this.rigidbody2D.velocity = speed * direction;
 		
-		//slowdown 状態のときは 初速度に 1/16
+		//slowdown 状態のときは 初速度に 1/5
 		if (GameObject.Find("BallGenerator").GetComponent<GenBall>().returnIsSlowdown())
 		{
-			this.rigidbody2D.velocity /= 16;
+			this.rigidbody2D.velocity /= 5;
 		}	
 		Initialize ();
 	}
