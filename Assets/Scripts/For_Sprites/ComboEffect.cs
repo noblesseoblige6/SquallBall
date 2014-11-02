@@ -7,7 +7,7 @@ public class ComboEffect : MonoBehaviour {
 	const int BlueEffectLayer = 13;
 
 	void OnAnimationFinish(){
-		//Destroy (gameObject);
+		Destroy (gameObject);
 	}
 
 	void OnCollisionEnter2D(Collision2D collis){
