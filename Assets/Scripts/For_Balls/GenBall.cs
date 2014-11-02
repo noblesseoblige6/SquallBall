@@ -105,14 +105,14 @@ public class GenBall : MonoBehaviour {
 
 
 						foreach (var e in blueballs) {
-							e.rigidbody2D.velocity /= 16;
+							e.rigidbody2D.velocity /= 5;
 						}
 
 						foreach (var e in redballs) {
-								e.rigidbody2D.velocity /= 16;
+								e.rigidbody2D.velocity /= 5;
 						}
 						foreach (var e in greenballs) {
-							e.rigidbody2D.velocity /= 16;
+							e.rigidbody2D.velocity /= 5;
 						}	
 				
 						updateSlowdownStartTime ();
@@ -132,13 +132,13 @@ public class GenBall : MonoBehaviour {
 						greenballs = GameObject.FindGameObjectsWithTag ("GreenBall");
 		
 						foreach (var e in redballs) {
-								e.rigidbody2D.velocity *= 16;
+								e.rigidbody2D.velocity *= 5;
 						}
 						foreach (var e in greenballs) {
-								e.rigidbody2D.velocity *= 16;
+								e.rigidbody2D.velocity *= 5;
 						}	
 						foreach (var e in blueballs) {
-								e.rigidbody2D.velocity *= 16;
+								e.rigidbody2D.velocity *= 5;
 						}
 
 						updateSlowdownEndTime ();
