@@ -68,6 +68,7 @@ public class Ball : MonoBehaviour {
 				
 				//**タッチされたら GenBall.cs 内の makeslowdown 関数を持ってきます**//
 				GameObject.Find("BallGenerator").GetComponent<GenBall>().makeSlowDown();
+				this.isTouched = true;
 			}
 			
 			
@@ -78,15 +79,14 @@ public class Ball : MonoBehaviour {
 	//マウスボタンから離れたとき
 	public void OnMouseUp ()
 	{
-		
 		Vector2 releasedPos = (Vector2)Camera.main.ScreenToWorldPoint (Input.mousePosition);
 		
 		//オブジェクトをクリックしていればはじいた方向にオブジェクトを飛ばす
 		if (this.isTouched) {
-			float bias = 5.0f;
+			float bias = 1.0f;
 			float length = (releasedPos - touchedPos).magnitude * bias;
-			if(length < 3.0f){
-				length = 3.0f;
+			if(length < 1.0f){
+				length = 1.0f;
 			}
 			Vector2 direction = (releasedPos - touchedPos).normalized;
 			rigidbody2D.velocity = length * direction;
@@ -177,7 +177,7 @@ public class Ball : MonoBehaviour {
 	//	削除チェック
 	public void checkDestroy()
 	{
-		if (checkVelosity () || checkStrength()) 
+		if (checkStrength()) 
 		{
 			Destroy (this.gameObject);
 			
