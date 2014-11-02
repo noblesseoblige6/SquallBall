@@ -42,33 +42,28 @@ public class GreenBall : Ball {
 	// Red Ball がぶつかったら点を加えて削除
 	void OnCollisionEnter2D(Collision2D collis){
 
-		//自分が蹴られている場合かつ相手が蹴られていない		
-		if (this.gameObject.layer == 8 && collis.gameObject.layer == 0) {
-			//相手を蹴られていることにする			
-			if (collis.gameObject.CompareTag ("RedBall") ||
-			    collis.gameObject.CompareTag ("GreenBall") ||
-			    collis.gameObject.CompareTag ("BlueBall")) {
-				collis.gameObject.layer = 8;
-			}	
+
+		//相手が Red Ball で, レイヤー8 にいたら 自分の強度を弱める 点数は後で考える
+		if ((collis.gameObject.layer == 8) && collis.gameObject.CompareTag ("RedBall")) 
+		{
+
+			//自分もレイヤー8にいたら無条件で消える
+			if(this.gameObject.layer == 8)
+			{
+				Destroy (this.gameObject);
+				collis.gameObject.GetComponent<RedBall>().updateChain();
+
+			}
+
+			else
+			{
+				this.updateStrength(collis.gameObject.GetComponent<RedBall>().returnStrength());
+
+				if(this.returnStrength() <= 0)
+					collis.gameObject.GetComponent<RedBall>().updateChain();
+			}
 		}
 
-		//相手が Red Ball で, どちらかが レイヤー8 にいたら 消える
-		if (collis.gameObject.CompareTag ("RedBall") && (collis.gameObject.layer == 8 || this.gameObject.layer == 8)) {
-			
-			//ボール大 同士
-			if(checkThisBall(3) && checkCollisBall(collis, 6))
-				addScore(20);
-			//ボール中 同士
-			else if(checkThisBall(4) && checkCollisBall(collis, 7))
-				addScore (30);
-			//ボール小 同士
-			else if(checkThisBall(5) && checkCollisBall(collis, 8))
-				addScore (50);
-			else
-				addScore(10);
-			
-			Destroy (this.gameObject);
-			//Destroy (collis.gameObject);
-		}
+
 	}
 }
