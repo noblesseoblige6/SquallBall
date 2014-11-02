@@ -184,14 +184,14 @@ public class Ball : MonoBehaviour {
 	}
 
 	//	削除チェック
-	public void checkDestroy()
+	public bool checkDestroy()
 	{
 		if (checkStrength() || checkChain()) 
 		{
 			Destroy (this.gameObject);
-			
+			return true;
 		}
-		
+		return false;
 	}
 	
 	//	強度を返す
@@ -250,4 +250,4 @@ public class Ball : MonoBehaviour {
 		else 
 			return false;
 	}
-}
+	}

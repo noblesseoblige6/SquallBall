@@ -11,6 +11,9 @@ TagManager:
   - RightButton
   - LeftButton
   - InvisibleWall
+  - RedEffect
+  - GreenEffect
+  - BlueEffect
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
@@ -23,9 +26,9 @@ TagManager:
   User Layer 8: KickedBall
   User Layer 9: InvisibleWall
   User Layer 10: Player
-  User Layer 11: 
-  User Layer 12: 
-  User Layer 13: 
+  User Layer 11: RedEffect
+  User Layer 12: GreenEffect
+  User Layer 13: BlueEffect
   User Layer 14: 
   User Layer 15: 
   User Layer 16: 
