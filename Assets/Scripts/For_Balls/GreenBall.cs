@@ -66,9 +66,24 @@ public class GreenBall : Ball {
 				addScore (50);
 			else
 				addScore(10);
-			
+
+			this.genEffect(collis);
 			Destroy (this.gameObject);
 			//Destroy (collis.gameObject);
 		}
+	}
+
+	public void genEffect(Collision2D collis){
+		//@akama GreenボールのエフェクトのPrehabを取得
+		GameObject TreePrefab = (GameObject)Resources.Load ("Prefabs/Tree1");
+		//当たったボールの方向から木の角度を求める
+		Vector3 collidedVec = collis.gameObject.rigidbody2D.velocity.normalized;
+		float dot = Vector3.Dot(collidedVec, new Vector3(0,1,0));
+		float angle = Mathf.Rad2Deg*Mathf.Acos(dot);
+		
+		Transform effectTransform = this.gameObject.transform;
+		// プレハブからインスタンスを生成
+		Instantiate (TreePrefab, effectTransform.position, Quaternion.AngleAxis(angle, new Vector3(0,0,1)));
+
 	}
 }
