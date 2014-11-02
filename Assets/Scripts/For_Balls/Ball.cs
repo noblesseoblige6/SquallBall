@@ -124,6 +124,7 @@ public class Ball : MonoBehaviour {
 			//@akamaタッチ操作が終わったとき
 			else if (touch.phase == TouchPhase.Ended && isTouched) {
 				OnMouseUp ();
+				Debug.Log("a");
 			}
 			
 		}
