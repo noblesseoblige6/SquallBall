@@ -56,6 +56,10 @@ public class BlueBall : Ball {
 			else if(this.gameObject.layer != 8 && collis.gameObject.layer == 8)
 			{
 				this.updateStrength(collis.gameObject.GetComponent<GreenBall>().returnStrength());
+				//強度が一定以下ならエフェクトを出して消える
+				if(this.checkDestroy()){
+					this.genEffect(collis);
+				}
 			}
 
 			//自分だけレイヤー8にいたら 連鎖数を-1
@@ -90,5 +94,30 @@ public class BlueBall : Ball {
 
 	
 			
+	}
+	public void genEffect (Collision2D collis)
+	{
+		GameObject effect;
+		int chain = collis.gameObject.GetComponent<GreenBall> ().returnChain ();
+		Transform effectTransform = this.gameObject.transform;
+
+		//@akama GreenボールのエフェクトのPrehabを取得
+		if (chain <= 2) {
+			effect = (GameObject)Resources.Load ("Prefabs/Water1");
+			effect.GetComponent<BoxCollider2D>().size.Set(1.0f, effectTransform.position.y * 0.5f);
+			effect.GetComponent<BoxCollider2D>().center.Set (0.0f, effectTransform.position.y * 0.5f);
+		} else if (chain <= 4) {
+			effect = (GameObject)Resources.Load ("Prefabs/Water1");
+			effect.GetComponent<BoxCollider2D>().size.Set(3.0f, effectTransform.position.y * 0.5f);
+			effect.GetComponent<BoxCollider2D>().center.Set (0.0f, effectTransform.position.y * 0.5f);
+		} else {
+			effect = (GameObject)Resources.Load ("Prefabs/Water1");
+			effect.GetComponent<BoxCollider2D>().size.Set(5.0f, effectTransform.position.y * 0.5f);
+			effect.GetComponent<BoxCollider2D>().center.Set (0.0f, effectTransform.position.y * 0.5f);
+
+		}
+		// プレハブからインスタンスを生成
+		Instantiate (effect, effectTransform.position, Quaternion.identity);
+		
 	}
 }
