@@ -74,11 +74,10 @@ public class GreenBall : Ball {
 	}
 
 	public void genEffect(Collision2D collis){
-		//@debug Greenボールのエフェクト発動
+		//@akama GreenボールのエフェクトのPrehabを取得
 		GameObject TreePrefab = (GameObject)Resources.Load ("Prefabs/Tree1");
-		
+		//当たったボールの方向から木の角度を求める
 		Vector3 collidedVec = collis.gameObject.rigidbody2D.velocity.normalized;
-		Debug.Log(collidedVec);
 		float dot = Vector3.Dot(collidedVec, new Vector3(0,1,0));
 		float angle = Mathf.Rad2Deg*Mathf.Acos(dot);
 		
