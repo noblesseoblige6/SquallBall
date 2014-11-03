@@ -103,7 +103,7 @@ public class RedBall : Ball {
 		GameObject effect;
 		int chain = collis.gameObject.GetComponent<BlueBall> ().returnChain ();
 		
-		//@akama GreenボールのエフェクトのPrehabを取得
+		//@akama GreenボールのエフェクトのPrehabを取得 そのときのchain数によって炎の半径が変わる
 		if (chain <= 2) {
 			effect = (GameObject)Resources.Load ("Prefabs/Fire3");
 		} else if (chain <= 4) {

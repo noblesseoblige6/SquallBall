@@ -13,7 +13,7 @@ GameObject:
   - 50: {fileID: 5000000}
   - 58: {fileID: 5800000}
   - 114: {fileID: 11400000}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: RedBall_M
   m_TagString: RedBall
   m_Icon: {fileID: 0}
@@ -87,18 +87,8 @@ MonoBehaviour:
   touchedPos: {x: 0, y: 0}
   isTouched: 0
   minVelo: 1
-  RedBalls:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  GreenBalls:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  BlueBalls:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  strength: 7
+  chain: 0
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
