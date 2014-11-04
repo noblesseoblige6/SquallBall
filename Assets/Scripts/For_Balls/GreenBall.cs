@@ -27,7 +27,7 @@ public class GreenBall : Ball
 						this.rigidbody2D.velocity /= 5;
 				}
 				Initialize ();
-
+//		makeSTR ();
 		}
 	
 		// Update is called once per frame
@@ -35,7 +35,7 @@ public class GreenBall : Ball
 		{
 				checkTouch ();
 				checkDestroy ();
-
+//		moveSTR ();
 		}
 
 		
@@ -50,8 +50,8 @@ public class GreenBall : Ball
 			//相手も自分もレイヤー8にいたら無条件で消える
 			if(this.gameObject.layer == 8 && collis.gameObject.layer == 8)
 			{
-				Destroy (this.gameObject);
-				Destroy (collis.gameObject);
+				destroy ();
+				collis.gameObject.GetComponent<RedBall>().destroy();
 			}
 			
 			//相手だけレイヤー8にいたら自分の強度を下げる
@@ -79,8 +79,8 @@ public class GreenBall : Ball
 			//相手も自分もレイヤー8にいたら無条件で消える
 			if(this.gameObject.layer == 8 && collis.gameObject.layer == 8)
 			{
-				Destroy (this.gameObject);
-				Destroy (collis.gameObject);
+				destroy ();
+				collis.gameObject.GetComponent<GreenBall>().destroy();
 			}
 			
 			
@@ -89,7 +89,7 @@ public class GreenBall : Ball
 			else if(this.gameObject.layer == 8 && collis.gameObject.layer != 8)
 			{
 				this.updateChain();
-				Destroy (collis.gameObject);
+				collis.gameObject.GetComponent<GreenBall>().destroy();
 			}
 			
 		}

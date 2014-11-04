@@ -13,7 +13,7 @@ public class Ball : MonoBehaviour {
 
 	public int strength;					//ボール強度
 	public int chain;						//ボールを消した回数
-
+//	public GameObject num;
 
 	// Use this for initialization
 	void Start () {
@@ -183,12 +183,18 @@ public class Ball : MonoBehaviour {
 						return false;
 	}
 
+	public void destroy()
+	{
+		//Destroy (this.num.gameObject);
+		Destroy (this.gameObject);
+	}
+
 	//	削除チェック
 	public bool checkDestroy()
 	{
 		if (checkStrength() || checkChain()) 
 		{
-			Destroy (this.gameObject);
+			destroy ();
 			return true;
 		}
 		return false;
@@ -250,4 +256,5 @@ public class Ball : MonoBehaviour {
 		else 
 			return false;
 	}
-	}
+
+}
