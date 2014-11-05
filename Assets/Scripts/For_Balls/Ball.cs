@@ -13,7 +13,7 @@ public class Ball : MonoBehaviour {
 
 	public int strength;					//ボール強度
 	public int chain;						//ボールを消した回数
-//	public GameObject num;
+	public GameObject num;					//読み込む Number オブジェクト
 
 	// Use this for initialization
 	void Start () {
@@ -149,7 +149,8 @@ public class Ball : MonoBehaviour {
 	// 画面外に出たら削除
 	public void OnBecameInvisible ()
 	{
-		Destroy (this.gameObject);
+		destroy ();
+
 	}
 
 	//速度が一定以下になったら削除フラグ
@@ -185,7 +186,7 @@ public class Ball : MonoBehaviour {
 
 	public void destroy()
 	{
-		//Destroy (this.num.gameObject);
+		Destroy (this.num);
 		Destroy (this.gameObject);
 	}
 
@@ -255,6 +256,49 @@ public class Ball : MonoBehaviour {
 
 		else 
 			return false;
+	}
+
+	public void makeSTR()
+	{
+		switch (this.strength) {
+				case 1:
+						num = (GameObject)Resources.Load ("Prefabs/Numbers/1");
+						break;
+
+				case 2:
+						num = (GameObject)Resources.Load ("Prefabs/Numbers/2");
+						break;
+
+				case 3:
+						num = (GameObject)Resources.Load ("Prefabs/Numbers/3");
+						break;
+
+				case 4:
+						num = (GameObject)Resources.Load ("Prefabs/Numbers/4");
+						break;
+
+				case 5:
+						num = (GameObject)Resources.Load ("Prefabs/Numbers/5");
+						break;
+
+				case 6:
+						num = (GameObject)Resources.Load ("Prefabs/Numbers/6");
+						break;
+			
+				case 7:
+						num = (GameObject)Resources.Load ("Prefabs/Numbers/7");
+						break;
+			
+				case 8:
+						num = (GameObject)Resources.Load ("Prefabs/Numbers/8");
+						break;
+			
+				case 9:
+						num = (GameObject)Resources.Load ("Prefabs/Numbers/9");
+						break;
+				}
+		num = (GameObject)Instantiate(num, this.gameObject.transform.position, this.gameObject.transform.rotation);
+
 	}
 
 }

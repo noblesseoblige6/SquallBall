@@ -27,7 +27,7 @@ public class BlueBall : Ball {
 			this.rigidbody2D.velocity /= 5;
 		}	
 		Initialize ();
-//		makeSTR ();
+		makeSTR ();
 
 	}
 	
@@ -99,6 +99,8 @@ public class BlueBall : Ball {
 	
 			
 	}
+
+
 	public void genEffect (Collision2D collis)
 	{
 		GameObject effect;
