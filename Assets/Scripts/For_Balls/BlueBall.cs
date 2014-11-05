@@ -35,7 +35,7 @@ public class BlueBall : Ball {
 	void Update () {
 		checkTouch ();
 		checkDestroy ();
-//		moveSTR ();
+		moveSTR ();
 	}
 
 

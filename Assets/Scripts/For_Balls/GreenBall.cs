@@ -27,7 +27,7 @@ public class GreenBall : Ball
 						this.rigidbody2D.velocity /= 5;
 				}
 				Initialize ();
-//		makeSTR ();
+		makeSTR ();
 		}
 	
 		// Update is called once per frame
@@ -35,7 +35,7 @@ public class GreenBall : Ball
 		{
 				checkTouch ();
 				checkDestroy ();
-//		moveSTR ();
+				moveSTR ();
 		}
 
 		

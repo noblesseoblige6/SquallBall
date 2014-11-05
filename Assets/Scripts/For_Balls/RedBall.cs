@@ -27,7 +27,7 @@ public class RedBall : Ball {
 			this.rigidbody2D.velocity /= 5;
 		}
 		Initialize ();
-//		makeSTR ();
+		makeSTR ();
 
 	}
 
@@ -36,7 +36,7 @@ public class RedBall : Ball {
 	void Update () {
 		checkTouch ();
 		checkDestroy ();
-//		moveSTR ();
+		moveSTR ();
 	}
 
 

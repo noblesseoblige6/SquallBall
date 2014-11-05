@@ -184,10 +184,17 @@ public class Ball : MonoBehaviour {
 						return false;
 	}
 
+	//ボール, 強度表示両方の削除
 	public void destroy()
 	{
 		Destroy (this.num);
 		Destroy (this.gameObject);
+	}
+
+	//強度表示のみの削除
+	public void destroySTR()
+	{
+		Destroy (this.num);
 	}
 
 	//	削除チェック
@@ -210,7 +217,8 @@ public class Ball : MonoBehaviour {
 	//	強度の減衰
 	public void updateStrength(int vsStrength){
 		this.strength -= vsStrength;
-
+		destroySTR ();
+		makeSTR ();
 	}
 
 	//連鎖数を返す
@@ -227,6 +235,7 @@ public class Ball : MonoBehaviour {
 	//連鎖数の更新(-1)
 	public void minusChain(){
 		this.chain--;
+
 	}
 	
 	//score 加算
@@ -258,6 +267,7 @@ public class Ball : MonoBehaviour {
 			return false;
 	}
 
+	//強度の表示をさせる(prefab から複製)
 	public void makeSTR()
 	{
 		switch (this.strength) {
@@ -297,8 +307,14 @@ public class Ball : MonoBehaviour {
 						num = (GameObject)Resources.Load ("Prefabs/Numbers/9");
 						break;
 				}
-		num = (GameObject)Instantiate(num, this.gameObject.transform.position, this.gameObject.transform.rotation);
+		this.num = (GameObject)Instantiate(num, (Vector2)this.gameObject.transform.position, num.transform.rotation);
 
 	}
 
+
+	//強度の表示を Ball にあわせて動かす
+	public void moveSTR()
+	{
+		this.num.transform.position = (Vector2)this.gameObject.transform.position;
+	}
 }
