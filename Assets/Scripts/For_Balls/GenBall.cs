@@ -13,9 +13,9 @@ public class GenBall : MonoBehaviour {
 	public float SlowdownStartTime = -3.0f;	//スロー状態開始時刻
 	public float SlowdownEndTime = -3.0f;		//スロー状態終了時刻
 	
-	public GameObject[] blueballs;
-	public GameObject[] redballs;
-	public GameObject[] greenballs;
+	public GameObject[] balls;
+
+
 
 
 
@@ -99,19 +99,22 @@ public class GenBall : MonoBehaviour {
 	{
 
 		if (!this.isSlowdown && checkSlowdownEndTime ()) {
-						redballs = GameObject.FindGameObjectsWithTag ("RedBall");
-						blueballs = GameObject.FindGameObjectsWithTag ("BlueBall");
-						greenballs = GameObject.FindGameObjectsWithTag ("GreenBall");
+						balls = GameObject.FindGameObjectsWithTag ("RedBall");
 
 
-						foreach (var e in blueballs) {
+						foreach (var e in balls) {
 							e.rigidbody2D.velocity /= 5;
 						}
 
-						foreach (var e in redballs) {
+						balls = GameObject.FindGameObjectsWithTag ("BlueBall");
+
+						foreach (var e in balls) {
 								e.rigidbody2D.velocity /= 5;
 						}
-						foreach (var e in greenballs) {
+
+						balls = GameObject.FindGameObjectsWithTag ("GreenBall");
+
+						foreach (var e in balls) {
 							e.rigidbody2D.velocity /= 5;
 						}	
 				
@@ -126,21 +129,24 @@ public class GenBall : MonoBehaviour {
 	{
 		//SlowdownEnd, Start Time と, isSlowdown の確認をして, accerelate
 		if (checkSlowdownEndTime () && checkSlowdownStartTime () && this.isSlowdown) {
-
-						redballs = GameObject.FindGameObjectsWithTag ("RedBall");
-						blueballs = GameObject.FindGameObjectsWithTag ("BlueBall");
-						greenballs = GameObject.FindGameObjectsWithTag ("GreenBall");
-		
-						foreach (var e in redballs) {
-								e.rigidbody2D.velocity *= 5;
-						}
-						foreach (var e in greenballs) {
-								e.rigidbody2D.velocity *= 5;
-						}	
-						foreach (var e in blueballs) {
-								e.rigidbody2D.velocity *= 5;
-						}
-
+			balls = GameObject.FindGameObjectsWithTag ("RedBall");
+			
+			
+			foreach (var e in balls) {
+				e.rigidbody2D.velocity *= 5;
+			}
+			
+			balls = GameObject.FindGameObjectsWithTag ("BlueBall");
+			
+			foreach (var e in balls) {
+				e.rigidbody2D.velocity *= 5;
+			}
+			
+			balls = GameObject.FindGameObjectsWithTag ("GreenBall");
+			
+			foreach (var e in balls) {
+				e.rigidbody2D.velocity *= 5;
+			}	
 						updateSlowdownEndTime ();
 						this.isSlowdown = false;
 				}

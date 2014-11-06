@@ -13,7 +13,7 @@ public class Ball : MonoBehaviour {
 
 	public int strength;					//ボール強度
 	public int chain;						//ボールを消した回数
-
+	public GameObject num;					//読み込む Number オブジェクト
 
 	// Use this for initialization
 	void Start () {
@@ -149,7 +149,8 @@ public class Ball : MonoBehaviour {
 	// 画面外に出たら削除
 	public void OnBecameInvisible ()
 	{
-		Destroy (this.gameObject);
+		destroy ();
+
 	}
 
 	//速度が一定以下になったら削除フラグ
@@ -183,12 +184,25 @@ public class Ball : MonoBehaviour {
 						return false;
 	}
 
+	//ボール, 強度表示両方の削除
+	public void destroy()
+	{
+		Destroy (this.num);
+		Destroy (this.gameObject);
+	}
+
+	//強度表示のみの削除
+	public void destroySTR()
+	{
+		Destroy (this.num);
+	}
+
 	//	削除チェック
 	public bool checkDestroy()
 	{
 		if (checkStrength() || checkChain()) 
 		{
-			Destroy (this.gameObject);
+			destroy ();
 			return true;
 		}
 		return false;
@@ -203,7 +217,8 @@ public class Ball : MonoBehaviour {
 	//	強度の減衰
 	public void updateStrength(int vsStrength){
 		this.strength -= vsStrength;
-
+		destroySTR ();
+		makeSTR ();
 	}
 
 	//連鎖数を返す
@@ -220,6 +235,7 @@ public class Ball : MonoBehaviour {
 	//連鎖数の更新(-1)
 	public void minusChain(){
 		this.chain--;
+
 	}
 	
 	//score 加算
@@ -250,4 +266,55 @@ public class Ball : MonoBehaviour {
 		else 
 			return false;
 	}
+
+	//強度の表示をさせる(prefab から複製)
+	public void makeSTR()
+	{
+		switch (this.strength) {
+				case 1:
+						num = (GameObject)Resources.Load ("Prefabs/Numbers/1");
+						break;
+
+				case 2:
+						num = (GameObject)Resources.Load ("Prefabs/Numbers/2");
+						break;
+
+				case 3:
+						num = (GameObject)Resources.Load ("Prefabs/Numbers/3");
+						break;
+
+				case 4:
+						num = (GameObject)Resources.Load ("Prefabs/Numbers/4");
+						break;
+
+				case 5:
+						num = (GameObject)Resources.Load ("Prefabs/Numbers/5");
+						break;
+
+				case 6:
+						num = (GameObject)Resources.Load ("Prefabs/Numbers/6");
+						break;
+			
+				case 7:
+						num = (GameObject)Resources.Load ("Prefabs/Numbers/7");
+						break;
+			
+				case 8:
+						num = (GameObject)Resources.Load ("Prefabs/Numbers/8");
+						break;
+			
+				case 9:
+						num = (GameObject)Resources.Load ("Prefabs/Numbers/9");
+						break;
+				}
+		this.num = (GameObject)Instantiate(num, (Vector2)this.gameObject.transform.position, num.transform.rotation);
+
 	}
+
+
+	//強度の表示を Ball にあわせて動かす
+	public void moveSTR()
+	{
+		this.num.transform.position = (Vector2)this.gameObject.transform.position;
+	}
+}
