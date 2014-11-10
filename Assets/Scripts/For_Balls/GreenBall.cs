@@ -106,10 +106,19 @@ public class GreenBall : Ball
 		//@akama GreenボールのエフェクトのPrehabを取得
 		if (chain <= 2) {
 			effect = (GameObject)Resources.Load ("Prefabs/Tree1");
+			effect.GetComponent<BoxCollider2D>().size.Set(1.5f, 3.0f);
+			effect.GetComponent<BoxCollider2D>().center.Set(0.0f, 0.8f);
+
 		} else if (chain <= 4) {
 			effect = (GameObject)Resources.Load ("Prefabs/Tree1");
+			effect.GetComponent<BoxCollider2D>().size.Set(3.0f, 3.0f);
+			effect.GetComponent<BoxCollider2D>().center.Set(0.0f, 0.8f);
+
 		} else {
 			effect = (GameObject)Resources.Load ("Prefabs/Tree1");
+			effect.GetComponent<BoxCollider2D>().size.Set(5.0f, 3.0f);
+			effect.GetComponent<BoxCollider2D>().center.Set(0.0f, 0.8f);
+
 		}
 		//当たったボールの方向から木の角度を求める
 		Vector3 collidedVec = collis.gameObject.rigidbody2D.velocity.normalized;
